@@ -26,7 +26,7 @@ tags: post
 
 <div class="cta-box">
 <strong>選び方の目安:</strong> 洗濯機で洗える・滑り止め加工が両面にあるタイプがお手入れしやすい。
-<br><a class="button" href="https://www.amazon.co.jp/s?k=犬+すべり止めマット&tag=YOURTAG-JP" rel="nofollow sponsored">すべり止めマットを見る →</a>
+<br><a class="button" href="https://www.amazon.co.jp/s?k=犬+すべり止めマット&tag=seniorpet-22" rel="nofollow sponsored">すべり止めマットを見る →</a>
 </div>
 
 ## スロープが向いているケース
@@ -39,7 +39,7 @@ tags: post
 
 <div class="cta-box">
 <strong>選び方の目安:</strong> 対応体重・折りたたみ可否・滑り止め加工の有無を確認する。
-<br><a class="button" href="https://www.amazon.co.jp/s?k=犬+スロープ+ペット用&tag=YOURTAG-JP" rel="nofollow sponsored">ペット用スロープを見る →</a>
+<br><a class="button" href="https://www.amazon.co.jp/s?k=犬+スロープ+ペット用&tag=seniorpet-22" rel="nofollow sponsored">ペット用スロープを見る →</a>
 </div>
 
 ## 比較表:マットとスロープ、どちらを選ぶか

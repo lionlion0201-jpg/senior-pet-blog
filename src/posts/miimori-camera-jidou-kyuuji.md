@@ -30,7 +30,7 @@ tags: post
 
 <div class="cta-box">
 <strong>選び方の目安:</strong> 首振り対応・暗視機能・動体検知通知の3点がそろっているか確認する。
-<br><a class="button" href="https://www.amazon.co.jp/s?k=見守りカメラ+ペット&tag=YOURTAG-JP" rel="nofollow sponsored">見守りカメラを見る →</a>
+<br><a class="button" href="https://www.amazon.co.jp/s?k=見守りカメラ+ペット&tag=seniorpet-22" rel="nofollow sponsored">見守りカメラを見る →</a>
 </div>
 
 ## 自動給餌器で確認したいこと
@@ -51,7 +51,7 @@ tags: post
 
 <div class="cta-box">
 <strong>選び方の目安:</strong> ウェットフード・療法食対応かどうかを最初に確認する。
-<br><a class="button" href="https://www.amazon.co.jp/s?k=自動給餌器+ペット&tag=YOURTAG-JP" rel="nofollow sponsored">自動給餌器を見る →</a>
+<br><a class="button" href="https://www.amazon.co.jp/s?k=自動給餌器+ペット&tag=seniorpet-22" rel="nofollow sponsored">自動給餌器を見る →</a>
 </div>
 
 ## 組み合わせるとできること
