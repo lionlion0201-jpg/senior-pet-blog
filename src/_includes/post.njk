@@ -4,6 +4,6 @@ layout: base.njk
 <article>
   <p class="post-meta">公開日: {{ date | readableDate }}</p>
   <h1>{{ title }}</h1>
-  <div class="affiliate-note">この記事にはアフィリエイト広告(Amazonアソシエイト・A8.net等)を含みます。商品購入や資料請求により、当サイトが紹介料を受け取ることがあります。詳しくは<a href="/affiliate-disclosure/">広告表記</a>をご覧ください。</div>
+  <div class="affiliate-note">この記事にはPR(アフィリエイト広告)を含みます。商品購入や資料請求により、当サイトが紹介料を受け取ることがあります。詳しくは<a href="{{ '/affiliate-disclosure/' | url }}">広告表記</a>をご覧ください。</div>
   {{ content | safe }}
 </article>
