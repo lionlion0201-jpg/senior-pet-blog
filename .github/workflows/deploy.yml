@@ -4,6 +4,10 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    # 毎週火・木・土 09:00 JST (00:00 UTC) に自動再ビルド。
+    # 予約公開(未来日付の記事)をこの時刻に反映させるためのトリガー。
+    - cron: "0 0 * * 2,4,6"
 
 permissions:
   contents: read
