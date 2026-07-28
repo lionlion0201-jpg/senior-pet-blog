@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }} | {{ site.name }}</title>
 <meta name="description" content="{{ description or site.description }}">
-<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<link rel="canonical" href="{{ site.domain }}{{ page.url | url }}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description or site.description }}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:url" content="{{ site.domain }}{{ page.url | url }}">
 <meta property="og:locale" content="ja_JP">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="{{ '/assets/style.css' | url }}">
 </head>
 <body>
 <header class="site-header">
   <div class="site-header-inner">
-    <a class="brand" href="/">{{ site.name }}</a>
+    <a class="brand" href="{{ '/' | url }}">{{ site.name }}</a>
     <nav>
-      <a href="/">ホーム</a>
-      <a href="/about/">運営者情報</a>
-      <a href="/affiliate-disclosure/">広告について</a>
+      <a href="{{ '/' | url }}">ホーム</a>
+      <a href="{{ '/about/' | url }}">運営者情報</a>
+      <a href="{{ '/affiliate-disclosure/' | url }}">広告について</a>
     </nav>
   </div>
 </header>
@@ -29,7 +29,7 @@
 </main>
 <footer class="site-footer">
   <p>&copy; {{ currentYear }} {{ site.name }}</p>
-  <p><a href="/affiliate-disclosure/">広告表記</a> ・ <a href="/privacy-policy/">プライバシーポリシー</a></p>
+  <p><a href="{{ '/affiliate-disclosure/' | url }}">広告表記</a> ・ <a href="{{ '/privacy-policy/' | url }}">プライバシーポリシー</a></p>
 </footer>
 </body>
 </html>

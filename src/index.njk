@@ -20,13 +20,13 @@ permalink: /
 {% for post in collections.posts %}
   <li class="post-card">
     <span class="post-meta">{{ post.date | readableDate }}</span>
-    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+    <h2><a href="{{ post.url | url }}">{{ post.data.title }}</a></h2>
     <p>{{ post.data.description }}</p>
   </li>
 {% endfor %}
 </ul>
 
 <div class="trust-strip">
-  <span><strong>正確性重視</strong> 断定を避け、公式資料・獣医師への相談を前提に書いています</span>
+  <span><strong>選び方の参考に</strong> 気になる症状や持病がある場合は、商品選びと合わせて獣医師にもご相談ください</span>
   <span><strong>広告表記</strong> Amazon等のアフィリエイト広告を含みます</span>
 </div>
