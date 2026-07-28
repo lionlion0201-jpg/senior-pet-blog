@@ -5,3 +5,4 @@ _site/
 __pycache__/
 scripts/_generated_pin_*.png
 scripts/.post_count_state
+scripts/.x_user_id_cache

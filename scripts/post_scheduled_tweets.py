@@ -74,6 +74,10 @@ def main():
             if not args.dry_run:
                 entry["posted"] = True
                 entry["posted_at"] = datetime.now(JST).isoformat()
+                # Save the real X post ID so fetch_tweet_metrics.py can look up
+                # impressions/likes/etc. for this specific tweet later.
+                if isinstance(result, dict) and result.get("id"):
+                    entry["tweet_id"] = result["id"]
         except tweepy.TweepyException as e:
             print(f" X API error, leaving in queue for manual retry: {e}", file=sys.stderr)
         except SystemExit as e:

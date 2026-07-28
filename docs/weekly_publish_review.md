@@ -30,17 +30,19 @@
 
 ### ステップ4: SNS投稿をキューに登録する
 - 承認した記事ごとに、`docs/cycles/`に保存されているプロモーターのSNS投稿案から、価値が高いと判断したものを1〜2件選ぶ
-- `docs/tweet_schedule.json` に以下の形式でエントリを追加する(`date`はステップ3で割り当てた`publishAt`の日付と揃える):
+- `docs/tweet_schedule.json` に以下の形式でエントリを追加する(`date`はステップ3で割り当てた`publishAt`の日付と揃える)。`type`には選んだ投稿の型(`hook`/`list`/`before_after`/`cta`のいずれか)を必ず入れる。これが`docs/engagement_log.json`でどの型の反応が良いかを比較する際のタグになる:
   ```json
   {
     "id": "2026-08-04-rougan-dansa-taisaku",
     "date": "2026-08-04",
     "article": "rougan-dansa-taisaku",
+    "type": "hook",
     "text": "投稿案の本文...",
     "posted": false,
     "posted_at": null
   }
   ```
+- 投稿後は`tweet_id`が自動的に記録される(`post_scheduled_tweets.py`が追記)。これを使って後日`scripts/fetch_tweet_metrics.py`がインプレッション数等を取得する
 
 ### ステップ5: まとめてpushする
 - 承認・publishAt付与・キュー登録が終わったファイルをすべて `git add` → `git commit` → `git push`
@@ -50,7 +52,10 @@
 
 ## 火・木・土に自動で起きること(人間の作業は不要)
 1. GitHub Actionsが09:00 JSTに定期リビルドし、`publishAt`が当日以前になった記事を自動公開する
-2. 別スケジュールタスクが `scripts/post_scheduled_tweets.py` を実行し、`tweet_schedule.json`でその日付の`posted: false`エントリを見つけてX APIで実投稿し、`posted: true`に更新する
+2. 別スケジュールタスクが `scripts/post_scheduled_tweets.py` を実行し、`tweet_schedule.json`でその日付の`posted: false`エントリを見つけてX APIで実投稿し、`posted: true`と実際の`tweet_id`を記録する
+
+## エンゲージメント計測(日曜9時、生成サイクルの一部として自動実行)
+`scripts/fetch_tweet_metrics.py` が過去に投稿した`tweet_id`のインプレッション数・いいね数等を取得し、`docs/engagement_log.json`に記録する。これにより次サイクルのアナリスト役が「一般的ベンチマークで代替」ではなく実データを使えるようになる。X APIは2026年2月から従量課金制(サブスクなし)になっており、自分のアカウントの投稿を読む場合は割引レート($0.001/件)が適用されるため、週数件のチェックであれば実質無視できるコスト。ただし無料枠は無いため、`console.x.com`で事前に少額のクレジットをチャージしておく必要がある。
 
 ## 頻度の目安
 生成: 週1回(日曜、自動、5〜6本のドラフト)
