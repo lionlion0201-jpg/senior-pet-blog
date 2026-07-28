@@ -15,12 +15,14 @@
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="/">{{ site.name }}</a>
-  <nav>
-    <a href="/">ホーム</a>
-    <a href="/about/">運営者情報</a>
-    <a href="/affiliate-disclosure/">広告について</a>
-  </nav>
+  <div class="site-header-inner">
+    <a class="brand" href="/">{{ site.name }}</a>
+    <nav>
+      <a href="/">ホーム</a>
+      <a href="/about/">運営者情報</a>
+      <a href="/affiliate-disclosure/">広告について</a>
+    </nav>
+  </div>
 </header>
 <main>
 {{ content | safe }}

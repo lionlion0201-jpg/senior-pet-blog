@@ -4,15 +4,29 @@ title: シニアの犬猫と暮らすためのグッズ・保険比較
 description: 老犬・老猫との暮らしを支える段差対策・見守りグッズ・ペット保険を、実用性重視で比較します。
 permalink: /
 ---
-<h1>シニア期の犬猫と、無理なく暮らす。</h1>
-<p>{{ site.description }}</p>
+<div class="hero">
+  <div class="hero-inner">
+    <h1>シニア期の犬猫と、無理なく暮らす。</h1>
+    <p>{{ site.description }}</p>
+    <div class="hero-badges">
+      <span>段差・介護対策</span>
+      <span>見守り・食事管理</span>
+      <span>ペット保険</span>
+    </div>
+  </div>
+</div>
 
 <ul class="post-list">
 {% for post in collections.posts %}
-  <li>
+  <li class="post-card">
+    <span class="post-meta">{{ post.date | readableDate }}</span>
     <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-    <p class="post-meta">{{ post.date | readableDate }}</p>
     <p>{{ post.data.description }}</p>
   </li>
 {% endfor %}
 </ul>
+
+<div class="trust-strip">
+  <span><strong>正確性重視</strong> 断定を避け、公式資料・獣医師への相談を前提に書いています</span>
+  <span><strong>広告表記</strong> Amazon等のアフィリエイト広告を含みます</span>
+</div>
