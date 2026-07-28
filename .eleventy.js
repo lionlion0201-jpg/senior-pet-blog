@@ -6,7 +6,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
 
   eleventyConfig.addCollection("posts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date - a.date);
+    return collectionApi
+      .getFilteredByGlob("src/posts/*.md")
+      .filter((item) => item.data.published !== false)
+      .sort((a, b) => b.date - a.date);
   });
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
