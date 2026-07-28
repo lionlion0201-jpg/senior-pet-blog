@@ -44,6 +44,7 @@
 
 ### ステップ5: まとめてpushする
 - 承認・publishAt付与・キュー登録が終わったファイルをすべて `git add` → `git commit` → `git push`
+- 補足: このフォルダ(iCloud同期下)で直接`git commit`すると、まれに`.git/index.lock`が残ってしまい削除できなくなることがある(iCloud同期領域の制約)。その場合は `/tmp` 等の別ディレクトリに`git clone`し、このフォルダの変更ファイルを`rsync`でコピーしてからcommit/pushするとよい
 - この時点ではまだサイトに反映されない(`publishAt`が未来日付の記事は非表示のまま)。実際の公開は各記事の`publishAt`の日にGitHub Actionsの定期リビルドで自動的に行われる
 - 公開予定日以降に、実際のURLで表示を確認する(手動チェック推奨)
 
