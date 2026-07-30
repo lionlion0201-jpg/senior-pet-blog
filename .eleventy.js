@@ -20,6 +20,10 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).setLocale("ja").toFormat("yyyy年LL月dd日");
   });
 
+  eleventyConfig.addFilter("isoDate", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
+  });
+
   return {
     pathPrefix: "/senior-pet-blog/",
     dir: {

@@ -1,9 +1,41 @@
 ---
 layout: base.njk
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ title | dump | safe }},
+  "description": {{ (description or site.description) | dump | safe }},
+  "datePublished": "{{ date | isoDate }}",
+  "author": { "@type": "Organization", "name": {{ site.author | dump | safe }} },
+  "publisher": { "@type": "Organization", "name": {{ site.name | dump | safe }} },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.domain }}{{ page.url | url }}" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": {{ site.name | dump | safe }}, "item": "{{ site.domain }}{{ '/' | url }}" },
+    { "@type": "ListItem", "position": 2, "name": {{ title | dump | safe }}, "item": "{{ site.domain }}{{ page.url | url }}" }
+  ]
+}
+</script>
 <article>
   <p class="post-meta">公開日: {{ date | readableDate }}</p>
   <h1>{{ title }}</h1>
   <div class="affiliate-note">この記事にはPR(アフィリエイト広告)を含みます。商品購入や資料請求により、当サイトが紹介料を受け取ることがあります。詳しくは<a href="{{ '/affiliate-disclosure/' | url }}">広告表記</a>をご覧ください。</div>
   {{ content | safe }}
 </article>
+<aside class="related-posts">
+  <h2>関連記事</h2>
+  <ul>
+    {% for post in collections.posts %}
+      {% if post.url != page.url %}
+        <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</aside>
