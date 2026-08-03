@@ -52,7 +52,9 @@
 
 ## 火・木・土に自動で起きること(人間の作業は不要)
 1. GitHub Actionsが09:00 JSTに定期リビルドし、`publishAt`が当日以前になった記事を自動公開する
-2. 別スケジュールタスクが `scripts/post_scheduled_tweets.py` を実行し、`tweet_schedule.json`でその日付の`posted: false`エントリを見つけてX APIで実投稿し、`posted: true`と実際の`tweet_id`を記録する
+2. GitHub Actions(`.github/workflows/post-tweets.yml`、09:30 JST)が `scripts/post_scheduled_tweets.py` を実行し、`tweet_schedule.json`でその日付の`posted: false`エントリを見つけてX APIで実投稿し、`posted: true`と実際の`tweet_id`を記録・commitする
+
+**補足(2026-08-02)**: 当初はCoworkのスケジュールタスク(`domestic-tweet-queue-poster`)でこの投稿を行う設計だったが、Coworkのサンドボックス環境から`api.twitter.com`への通信が恒常的にブロックされている(403 Forbidden)ことが判明したため、実際の投稿はGitHub Actions側に移行した。GitHub Actionsのランナーは通常のインターネットアクセスを持つため、ここでは問題なく動作する。`domestic-tweet-queue-poster`タスクは無効化済み。X APIの認証情報はリポジトリのGitHub Actions Secretsに設定する必要がある(`X_API_KEY` / `X_API_SECRET` / `X_ACCESS_TOKEN` / `X_ACCESS_TOKEN_SECRET`)。
 
 ## エンゲージメント計測(日曜9時、生成サイクルの一部として自動実行)
 `scripts/fetch_tweet_metrics.py` が過去に投稿した`tweet_id`のインプレッション数・いいね数等を取得し、`docs/engagement_log.json`に記録する。これにより次サイクルのアナリスト役が「一般的ベンチマークで代替」ではなく実データを使えるようになる。X APIは2026年2月から従量課金制(サブスクなし)になっており、自分のアカウントの投稿を読む場合は割引レート($0.001/件)が適用されるため、週数件のチェックであれば実質無視できるコスト。ただし無料枠は無いため、`console.x.com`で事前に少額のクレジットをチャージしておく必要がある。

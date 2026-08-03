@@ -1,0 +1,46 @@
+name: Post Queued Tweets
+
+# Cowork(このリポジトリを自動運用しているサンドボックス環境)からは
+# api.twitter.com / api.x.com への通信がプロキシでブロックされているため、
+# 実際のX投稿はここ(GitHub Actionsのランナー、通常のインターネットアクセスを持つ)で行う。
+on:
+  schedule:
+    # 毎週火・木・土 09:30 JST (00:30 UTC)。09:00 JSTの記事デプロイの少し後に実行する。
+    - cron: "30 0 * * 2,4,6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "post-tweets"
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r scripts/requirements.txt
+      - name: Post today's queued tweets
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          MAX_POSTS_PER_RUN: "6"
+        run: python3 scripts/post_scheduled_tweets.py
+      - name: Commit updated tweet_schedule.json (posted status)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- docs/tweet_schedule.json; then
+            git add docs/tweet_schedule.json
+            git commit -m "chore: mark queued tweets as posted [skip ci]"
+            git push
+          else
+            echo "No changes to tweet_schedule.json"
+          fi

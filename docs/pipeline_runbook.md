@@ -27,10 +27,22 @@
       対応するSNS投稿案を docs/tweet_schedule.json のキューに追加してpush
                 ↓
 [火・木・土・自動] GitHub Actionsが定期リビルド → publishAtが到来した記事を自動公開
-              同時に別スケジュールタスクが tweet_schedule.json の当日分をX APIで投稿
+              同時に別のGitHub Actions(post-tweets.yml)が tweet_schedule.json の当日分をX APIで投稿
                 ↓
         次サイクルのアナリストへ
 ```
+
+## X投稿の実行環境について(2026-08-02)
+
+X投稿(`tweet_schedule.json`の当日分をX APIで投稿する処理)は、当初Coworkのスケジュールタスク(`domestic-tweet-queue-poster`)で実行する設計だったが、**Coworkのサンドボックス環境から`api.twitter.com`への通信が恒常的にブロックされている**(403 Forbidden、2026年8月時点で確認済み)ことが判明したため、実際の投稿処理は`.github/workflows/post-tweets.yml`としてGitHub Actions側に移行した(火・木・土09:30 JSTに実行)。GitHub Actionsのランナーは通常のインターネットアクセスを持つため問題なく動作する。
+
+これに伴い、Coworkの`domestic-tweet-queue-poster`タスクは無効化済み。GitHub Actions側でX投稿を成立させるには、リポジトリのSettings→Secrets and variables→Actionsで以下4つのシークレットを手動登録する必要がある(`scripts/.env`と同じ値、api.github.comもサンドボックスからブロックされているため自動登録は不可):
+- `X_API_KEY`
+- `X_API_SECRET`
+- `X_ACCESS_TOKEN`
+- `X_ACCESS_TOKEN_SECRET`
+
+記事生成(週次バッチ)・週末レビュー・公開自体(deploy.ymlの定期リビルド)はこの制約の影響を受けず、従来どおりCowork側で実行する。
 
 ## 生成と公開の分離、および週次バッチ化(2026年7月〜)
 
