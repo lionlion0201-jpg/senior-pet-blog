@@ -2,11 +2,9 @@
 layout: post.njk
 title: "老犬・老猫の聴力・視力低下と暮らす｜安全な生活環境の整え方"
 description: "呼びかけへの反応が鈍くなった、物にぶつかるようになった——シニア期の犬猫に見られやすい聴力・視力の変化に向けて、LEDカラーや常夜灯など安全対策グッズの選び方を整理します。"
-date: 2026-09-22
+date: 2026-09-15
 tags: post
-published: false
-permalink: false
-eleventyExcludeFromCollections: true
+publishAt: "2026-09-15T09:00:00+09:00"
 ---
 
 名前を呼んでも反応が薄くなった、部屋の家具にぶつかるようになった——シニア期の犬猫と暮らしていると、聴力や視力の変化に気づく場面が出てきます。

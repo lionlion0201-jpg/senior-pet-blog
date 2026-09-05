@@ -2,11 +2,9 @@
 layout: post.njk
 title: "シニア犬猫のデンタルケア｜歯みがきシート・デンタルガムの選び方"
 description: "口臭が気になる、歯石が目立つ——シニア期の犬猫に向けたデンタルケア用品の選び方を、歯みがきシート・デンタルガム・口内ケアジェルの3タイプで比較します。"
-date: 2026-09-15
+date: 2026-09-26
 tags: post
-published: false
-permalink: false
-eleventyExcludeFromCollections: true
+publishAt: "2026-09-26T09:00:00+09:00"
 ---
 
 最近口臭が強くなった気がする、歯石が目立つようになってきた——シニア期の犬猫と暮らしていると、口まわりの変化が気になり始める飼い主さんは少なくありません。

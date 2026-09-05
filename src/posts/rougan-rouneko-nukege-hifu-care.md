@@ -2,11 +2,9 @@
 layout: post.njk
 title: "老犬・老猫の抜け毛・皮膚ケア｜ブラッシング用品と保湿ケアの選び方"
 description: "シニア期に増えてくる抜け毛や毛艶の変化、皮膚の乾燥に向けて、ブラッシング用品・保湿スプレー・保湿シャンプーの選び方を比較します。"
-date: 2026-09-17
+date: 2026-09-22
 tags: post
-published: false
-permalink: false
-eleventyExcludeFromCollections: true
+publishAt: "2026-09-22T09:00:00+09:00"
 ---
 
 以前より毛艶がなくなってきた、抜け毛が増えた、皮膚がかさついているように見える——シニア期の犬猫と暮らしていると、被毛や皮膚の変化に気づく場面が増えてきます。
