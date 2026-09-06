@@ -5,8 +5,8 @@ name: Post Queued Tweets
 # 実際のX投稿はここ(GitHub Actionsのランナー、通常のインターネットアクセスを持つ)で行う。
 on:
   schedule:
-    # 毎週火・木・土 09:30 JST (00:30 UTC)。09:00 JSTの記事デプロイの少し後に実行する。
-    - cron: "30 0 * * 2,4,6"
+    # 毎日 09:30 JST (00:30 UTC)。09:00 JSTの記事デプロイの少し後に実行する(2026-09-06に火木土から毎日へ変更)。
+    - cron: "30 0 * * *"
   workflow_dispatch:
 
 permissions:
