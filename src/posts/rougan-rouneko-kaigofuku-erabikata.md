@@ -2,11 +2,9 @@
 layout: post.njk
 title: "老犬・老猫の介護服｜着脱しやすく、粗相ケアの負担を減らす洋服の選び方"
 description: "おむつや防水シーツと組み合わせて使いやすい、着脱の負担が少ないシニア期の犬猫向け介護服の選び方を比較します。"
-date: 2026-09-12
+date: 2026-10-17
 tags: post
-published: false
-permalink: false
-eleventyExcludeFromCollections: true
+publishAt: "2026-10-17T09:00:00+09:00"
 ---
 
 おむつがずれてしまう、着替えのたびに体を大きく動かすのがつらそうにしている——シニア期の犬猫と暮らしていると、日々の服選びそのものが介護の負担につながっていることに気づく場面が出てきます。
