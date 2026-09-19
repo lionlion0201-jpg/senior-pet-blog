@@ -2,7 +2,6 @@ const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
 
   eleventyConfig.addCollection("posts", function (collectionApi) {
