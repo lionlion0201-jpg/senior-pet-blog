@@ -1,23 +1,5 @@
 [
   {
-    "id": "2026-09-08-shinia-neko-insui-jinzou-care-hook",
-    "date": "2026-09-08",
-    "article": "shinia-neko-insui-jinzou-care",
-    "type": "hook",
-    "text": "「最近やたら水を飲みに行く気がする」——シニア猫に見られやすい飲水量の変化、まずは日々の量を把握することから始めてみませんか🐾\n記事はこちら👇\n#シニア猫 #猫の腎臓ケア",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-08-shinia-neko-insui-jinzou-care-cta",
-    "date": "2026-09-08",
-    "article": "shinia-neko-insui-jinzou-care",
-    "type": "cta",
-    "text": "シニア猫の飲水量が気になったら、給水ボウル・腎臓の健康に配慮したフード・尿チェック猫砂の選び方と、動物病院に相談すべきサインをまとめました。\n記事はこちら👇\n#シニア猫 #腎臓の健康ケア",
-    "posted": false,
-    "posted_at": null
-  },
-  {
     "id": "2026-09-07-rougan-rouneko-drive-anzen-guzzu-hook",
     "date": "2026-09-07",
     "article": "rougan-rouneko-drive-anzen-guzzu",
@@ -32,6 +14,24 @@
     "article": "rougan-rouneko-drive-anzen-guzzu",
     "type": "cta",
     "text": "老犬・老猫の車でのお出かけ、ドライブボックス・車用シートベルト・ドライブシートの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #ドライブ対策",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-09-08-shinia-neko-insui-jinzou-care-hook",
+    "date": "2026-09-08",
+    "article": "shinia-neko-insui-jinzou-care",
+    "type": "hook",
+    "text": "「最近やたら水を飲みに行く気がする」——シニア猫に見られやすい飲水量の変化、まずは日々の量を把握することから始めてみませんか🐾\n記事はこちら👇\n#シニア猫 #猫の腎臓ケア",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-09-08-shinia-neko-insui-jinzou-care-cta",
+    "date": "2026-09-08",
+    "article": "shinia-neko-insui-jinzou-care",
+    "type": "cta",
+    "text": "シニア猫の飲水量が気になったら、給水ボウル・腎臓の健康に配慮したフード・尿チェック猫砂の選び方と、動物病院に相談すべきサインをまとめました。\n記事はこちら👇\n#シニア猫 #腎臓の健康ケア",
     "posted": false,
     "posted_at": null
   },
@@ -94,24 +94,24 @@
     "tweet_id": "2098274817958937073"
   },
   {
-    "id": "2026-09-14-rougan-rouneko-choryoku-shiryoku-taisaku-hook",
-    "date": "2026-09-14",
-    "article": "rougan-rouneko-choryoku-shiryoku-taisaku",
+    "id": "2026-09-12-fuyujitaku-boukan-taisaku-hook",
+    "date": "2026-09-12",
+    "article": "fuyujitaku-boukan-taisaku",
     "type": "hook",
-    "text": "名前を呼んでも反応が薄い、家具にぶつかるようになった…シニア期に見られやすい聴力・視力の変化、LEDカラー・足元照明・バイブレーションカラーで安全な環境づくりを。\n記事はこちら👇\n#老犬 #老猫 #シニアペット",
+    "text": "朝晩の冷え込み、シニア期の体温調節や関節への負担につながりやすいと言われています。ペット用ヒーター・あったかウェア・毛布で冬支度を始めませんか。\n記事はこちら👇\n#老犬 #老猫 #冬支度",
     "posted": true,
-    "posted_at": "2026-09-14T14:16:04.476243+09:00",
-    "tweet_id": "2099366549278871573"
+    "posted_at": "2026-09-12T13:50:43.960280+09:00",
+    "tweet_id": "2098635396057903449"
   },
   {
-    "id": "2026-09-14-rougan-rouneko-choryoku-shiryoku-taisaku-cta",
-    "date": "2026-09-14",
-    "article": "rougan-rouneko-choryoku-shiryoku-taisaku",
+    "id": "2026-09-12-fuyujitaku-boukan-taisaku-cta",
+    "date": "2026-09-12",
+    "article": "fuyujitaku-boukan-taisaku",
     "type": "cta",
-    "text": "老犬・老猫の聴力・視力低下に向けた安全な生活環境の整え方、LEDカラー・足元照明・バイブレーションカラーを比較しました。\n記事はこちら👇\n#シニア犬猫",
+    "text": "老犬・老猫の冬支度、ペット用ヒーター・あったかウェア・毛布の選び方と注意点をまとめました。\n記事はこちら👇\n#シニアペット",
     "posted": true,
-    "posted_at": "2026-09-14T14:16:04.807291+09:00",
-    "tweet_id": "2099366550319038833"
+    "posted_at": "2026-09-12T13:50:44.196510+09:00",
+    "tweet_id": "2098635396984795300"
   },
   {
     "id": "2026-09-13-rougan-rouneko-bousai-guzzu-hook",
@@ -134,24 +134,24 @@
     "tweet_id": "2099002376946581515"
   },
   {
-    "id": "2026-09-12-fuyujitaku-boukan-taisaku-hook",
-    "date": "2026-09-12",
-    "article": "fuyujitaku-boukan-taisaku",
+    "id": "2026-09-14-rougan-rouneko-choryoku-shiryoku-taisaku-hook",
+    "date": "2026-09-14",
+    "article": "rougan-rouneko-choryoku-shiryoku-taisaku",
     "type": "hook",
-    "text": "朝晩の冷え込み、シニア期の体温調節や関節への負担につながりやすいと言われています。ペット用ヒーター・あったかウェア・毛布で冬支度を始めませんか。\n記事はこちら👇\n#老犬 #老猫 #冬支度",
+    "text": "名前を呼んでも反応が薄い、家具にぶつかるようになった…シニア期に見られやすい聴力・視力の変化、LEDカラー・足元照明・バイブレーションカラーで安全な環境づくりを。\n記事はこちら👇\n#老犬 #老猫 #シニアペット",
     "posted": true,
-    "posted_at": "2026-09-12T13:50:43.960280+09:00",
-    "tweet_id": "2098635396057903449"
+    "posted_at": "2026-09-14T14:16:04.476243+09:00",
+    "tweet_id": "2099366549278871573"
   },
   {
-    "id": "2026-09-12-fuyujitaku-boukan-taisaku-cta",
-    "date": "2026-09-12",
-    "article": "fuyujitaku-boukan-taisaku",
+    "id": "2026-09-14-rougan-rouneko-choryoku-shiryoku-taisaku-cta",
+    "date": "2026-09-14",
+    "article": "rougan-rouneko-choryoku-shiryoku-taisaku",
     "type": "cta",
-    "text": "老犬・老猫の冬支度、ペット用ヒーター・あったかウェア・毛布の選び方と注意点をまとめました。\n記事はこちら👇\n#シニアペット",
+    "text": "老犬・老猫の聴力・視力低下に向けた安全な生活環境の整え方、LEDカラー・足元照明・バイブレーションカラーを比較しました。\n記事はこちら👇\n#シニア犬猫",
     "posted": true,
-    "posted_at": "2026-09-12T13:50:44.196510+09:00",
-    "tweet_id": "2098635396984795300"
+    "posted_at": "2026-09-14T14:16:04.807291+09:00",
+    "tweet_id": "2099366550319038833"
   },
   {
     "id": "2026-09-15-rougan-rouneko-dassou-maigo-taisaku-hook",
@@ -254,38 +254,11 @@
     "tweet_id": "2101172280357535865"
   },
   {
-    "id": "2026-09-20-rougan-rouneko-namidayake-mekuso-care-hook",
+    "id": "2026-09-20-rougan-rouneko-joshitsu-shikke-taisaku-hook",
     "date": "2026-09-20",
-    "article": "rougan-rouneko-namidayake-mekuso-care",
+    "article": "rougan-rouneko-joshitsu-shikke-taisaku",
     "type": "hook",
-    "text": "目の下が茶色く汚れている、目やにの量が増えた気がする…シニア期に増えやすい涙やけ、目のふきとりシート・アイクリーナーの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #涙やけ",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-20-rougan-rouneko-namidayake-mekuso-care-cta",
-    "date": "2026-09-20",
-    "article": "rougan-rouneko-namidayake-mekuso-care",
-    "type": "cta",
-    "text": "老犬・老猫の涙やけ・目やにケア用品、目のふきとりシート・アイクリーナー・目まわりカットバサミを比較しました。\n記事はこちら👇\n#シニアペット",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-21-rougan-rouneko-necchusho-taisaku-hook",
-    "date": "2026-09-21",
-    "article": "rougan-rouneko-necchusho-taisaku",
-    "type": "hook",
-    "text": "以前より息が荒くなるのが早い、日中ぐったりして動かない…そんな様子ありませんか?シニア期は体温調節の機能が変化しやすいと言われています。クールマット・循環式給水器・水分補給ゼリーの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #熱中症対策",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-21-rougan-rouneko-necchusho-taisaku-cta",
-    "date": "2026-09-21",
-    "article": "rougan-rouneko-necchusho-taisaku",
-    "type": "cta",
-    "text": "シニア犬猫の夏支度、クールマット・循環式給水器・水分補給ゼリーを比較しました。動物病院に相談すべきサインもまとめています。\n記事はこちら👇\n#老犬老猫 #夏の対策",
+    "text": "雨が続くと部屋の湿気がなかなか取れない…その環境、シニア期の皮膚には負担かもしれません🐾",
     "posted": false,
     "posted_at": null
   },
@@ -754,6 +727,69 @@
     "article": "rougan-rouneko-kaigofuku-erabikata",
     "type": "cta",
     "text": "おむつ・防水シーツと組み合わせて使う介護服の選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #介護服",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-18-rougan-rouneko-yakan-sanpo-anzen-guzzu-hook",
+    "date": "2026-10-18",
+    "article": "rougan-rouneko-yakan-sanpo-anzen-guzzu",
+    "type": "hook",
+    "text": "日没が早くなるこの季節、いつもの散歩道で「気づかれにくい」時間が増えていませんか?反射材ベスト・LEDライトの選び方をまとめました🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-19-rougan-rouneko-jidou-kyuusuiki-erabikata-hook",
+    "date": "2026-10-19",
+    "article": "rougan-rouneko-jidou-kyuusuiki-erabikata",
+    "type": "hook",
+    "text": "「前より水を飲む量が減った気がする…」その様子、放っておいて大丈夫?循環式ウォーターファウンテンなど自動給水器の選び方をまとめました🐾 #老犬 #老猫",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-20-rougan-rouneko-dakko-himo-sling-carry-hook",
+    "date": "2026-10-20",
+    "article": "rougan-rouneko-dakko-himo-sling-carry",
+    "type": "hook",
+    "text": "散歩の途中で歩けなくなり、抱っこして帰ることが増えた…そんな方に、スリングキャリーという選択肢があります🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-21-shinia-neko-jidou-toire-erabikata-hook",
+    "date": "2026-10-21",
+    "article": "shinia-neko-jidou-toire-erabikata",
+    "type": "hook",
+    "text": "トイレの回数が増えて掃除が追いつかない…そんな悩みには自動猫トイレという選択肢があります🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-22-rougan-rouneko-omutsu-shori-shoushuu-bukuro-hook",
+    "date": "2026-10-22",
+    "article": "rougan-rouneko-omutsu-shori-shoushuu-bukuro",
+    "type": "hook",
+    "text": "おむつ・シーツの交換が増えて、ゴミ箱まわりのニオイが気になる…そんな悩みには処理用消臭袋が役立つかもしれません🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-23-rougan-rouneko-namidayake-mekuso-care-hook",
+    "date": "2026-10-23",
+    "article": "rougan-rouneko-namidayake-mekuso-care",
+    "type": "hook",
+    "text": "目の下が茶色く汚れている、目やにの量が増えた気がする…シニア期に増えやすい涙やけ、目のふきとりシート・アイクリーナーの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #涙やけ",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-23-rougan-rouneko-namidayake-mekuso-care-cta",
+    "date": "2026-10-23",
+    "article": "rougan-rouneko-namidayake-mekuso-care",
+    "type": "cta",
+    "text": "老犬・老猫の涙やけ・目やにケア用品、目のふきとりシート・アイクリーナー・目まわりカットバサミを比較しました。\n記事はこちら👇\n#シニアペット",
     "posted": false,
     "posted_at": null
   }
