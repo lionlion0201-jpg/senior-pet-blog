@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+const { isPublished } = require("./lib/publishing");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
@@ -6,12 +7,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("posts", function (collectionApi) {
     const now = new Date();
+    // 判定は lib/publishing.js に集約している。
+    // src/posts/posts.11tydata.js のページ生成可否と必ず同じ結果になるようにするため、
+    // ここに条件を直接書き足さないこと。
     return collectionApi
       .getFilteredByGlob("src/posts/*.md")
-      .filter((item) => item.data.published !== false)
-      // 予約公開: publishAtが設定されていて、まだ到来していない場合のみ非表示にする。
-      // publishAtが無い記事(既存記事など)は従来通り常に表示する。
-      .filter((item) => !item.data.publishAt || new Date(item.data.publishAt) <= now)
+      .filter((item) => isPublished(item.data, now))
       .sort((a, b) => b.date - a.date);
   });
 
