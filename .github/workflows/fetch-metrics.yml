@@ -1,0 +1,64 @@
+name: Fetch Tweet Metrics
+
+# Cowork(このリポジトリを自動運用しているサンドボックス環境)からは api.twitter.com への
+# 通信がプロキシでブロックされているため、docs/engagement_log.json が空のままだった。
+# その結果、週次パイプラインのアナリスト工程は毎回「実データ取得不可、一般的ベンチマークで代替」
+# で進んでおり、型別(hook/list/before_after/cta)の効果比較が一度もできていない。
+#
+# X投稿を post-tweets.yml に逃がしたのと同じ理屈で、メトリクス取得もここ(通常の
+# インターネットアクセスを持つGitHub Actionsのランナー)で行い、結果をcommitする。
+# パイプラインはコミットされた docs/engagement_log.json を読むだけでよくなる。
+
+on:
+  schedule:
+    # 毎日 22:00 JST (13:00 UTC)。当日09:30の投稿から約12時間後で、
+    # インプレッションがある程度出そろったタイミングを狙っている。
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      max_results:
+        description: "直近何件の自分のツイートを対象にするか(最大100)"
+        required: false
+        default: "25"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "fetch-metrics"
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Fetch metrics
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          # 未設定でも動くが、その場合は毎回 GET /2/users/me に約$0.01かかる。
+          # Settings → Secrets and variables → Actions → Variables に X_USER_ID を登録すると節約できる。
+          X_USER_ID: ${{ vars.X_USER_ID }}
+        run: |
+          python3 scripts/fetch_tweet_metrics.py \
+            --max-results "${{ github.event.inputs.max_results || '25' }}"
+
+      - name: Commit engagement log
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- docs/engagement_log.json; then
+            git add docs/engagement_log.json
+            git commit -m "chore: update tweet engagement metrics [skip ci]"
+            git push
+          else
+            echo "No metric changes to commit."
+          fi

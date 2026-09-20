@@ -60,6 +60,14 @@ def get_client():
 
 
 def get_own_user_id(client, dry_run=False):
+    # GitHub Actions のランナーは毎回まっさらなので、ローカルのキャッシュファイルが存在しない。
+    # そのままだと実行のたびに GET /2/users/me で約$0.01を払うことになるため、
+    # 環境変数 X_USER_ID(数値のユーザーID)が与えられていればそれを優先する。
+    # リポジトリの Variables に登録しておけばよい(秘密情報ではない)。
+    env_user_id = os.environ.get("X_USER_ID", "").strip()
+    if env_user_id:
+        return env_user_id
+
     if os.path.exists(USER_ID_CACHE):
         with open(USER_ID_CACHE) as f:
             cached = f.read().strip()
