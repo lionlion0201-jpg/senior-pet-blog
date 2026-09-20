@@ -43,6 +43,16 @@ gtag('config', '{{ site.gaId }}');
     var host = '';
     try { host = new URL(a.href).hostname.replace(/^www\./, ''); } catch (err) {}
 
+    // リンク先の「何を探しに行ったか」を読める形で残す。
+    // Amazonの検索URLは日本語がパーセントエンコードされて長大になり、
+    // 100文字で切ると壊れた文字列になってしまうため、検索キーワード(k)を
+    // デコードして使う。キーワードが無ければホスト+パスで代用する。
+    var target = '';
+    try {
+      var u = new URL(a.href);
+      target = u.searchParams.get('k') || (u.hostname.replace(/^www\./, '') + u.pathname);
+    } catch (err) { target = a.href; }
+
     var params = {
       article: location.pathname.slice(0, 100),
       link_domain: host.slice(0, 100),
@@ -50,9 +60,15 @@ gtag('config', '{{ site.gaId }}');
       // 記事内で何番目のCTAか。本文を読み進めた先のCTAほど購買意向が高い、
       // といった仮説を後から検証できるようにしている。
       position: box ? boxes.indexOf(box) + 1 : 0,
-      link_url: a.href.slice(0, 100)
+      link_target: target.slice(0, 100)
     };
-    if (strong) params.product = (strong.textContent || '').trim().slice(0, 100);
+    // CTAボックス内の <strong> は、US記事では商品名だが、JP記事では
+    // 「選び方の目安:」のような見出しラベルになっている。末尾がコロンの
+    // ものはラベルとみなして商品名として扱わない。
+    if (strong) {
+      var st = (strong.textContent || '').trim();
+      if (st && !/[:：]$/.test(st)) params.product = st.slice(0, 100);
+    }
 
     gtag('event', 'affiliate_click', params);
   }, true);
