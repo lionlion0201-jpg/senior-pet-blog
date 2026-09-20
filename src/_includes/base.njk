@@ -20,6 +20,43 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '{{ site.gaId }}');
+
+// アフィリエイトリンクのクリックを計測する。
+// 売上までの経路(表示→流入→リンククリック→注文)のうち、実際に取得できる
+// 範囲で最も売上に近いのがこのクリック。ここが空白だと、投稿や記事の良し悪しを
+// インプレッションだけで判断することになり、「読まれるが買われない」型が勝って
+// しまう。設計の背景は アフィリエイト/共通/計測設計.md を参照。
+//
+// 対象は rel に sponsored を含むリンクのみ。アフィリエイトリンクには例外なく
+// rel="nofollow sponsored" を付ける運用なので、記事間の内部リンクや参考リンクを
+// 誤って拾うことがない。
+(function () {
+  document.addEventListener('click', function (e) {
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var a = el.closest('a[rel~="sponsored"]');
+    if (!a || typeof gtag !== 'function') return;
+
+    var box = a.closest('.cta-box');
+    var boxes = Array.prototype.slice.call(document.querySelectorAll('.cta-box'));
+    var strong = box ? box.querySelector('strong') : null;
+    var host = '';
+    try { host = new URL(a.href).hostname.replace(/^www\./, ''); } catch (err) {}
+
+    var params = {
+      article: location.pathname.slice(0, 100),
+      link_domain: host.slice(0, 100),
+      link_text: (a.textContent || '').trim().slice(0, 100),
+      // 記事内で何番目のCTAか。本文を読み進めた先のCTAほど購買意向が高い、
+      // といった仮説を後から検証できるようにしている。
+      position: box ? boxes.indexOf(box) + 1 : 0,
+      link_url: a.href.slice(0, 100)
+    };
+    if (strong) params.product = (strong.textContent || '').trim().slice(0, 100);
+
+    gtag('event', 'affiliate_click', params);
+  }, true);
+})();
 </script>
 {% endif %}
 </head>
