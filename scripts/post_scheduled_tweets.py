@@ -52,6 +52,54 @@ def save_queue(queue):
         f.write("\n")
 
 
+SITE_FILE = os.path.join(os.path.dirname(__file__), "..", "src", "_data", "site.json")
+
+
+def article_url(slug):
+    """記事の本番URLを組み立てる。
+
+    2026-09-21まで、キューのテキストは「記事はこちら👇」で終わっていながら
+    URLが一切入っていなかった。投稿21件すべてがリンク無しで流れており、
+    Xからの流入は1件も発生していなかった。
+
+    URLは site.json から組み立てる。ベタ書きしないのは、独自ドメインへ
+    移行したときに自動で追従させるため。
+    """
+    if not slug:
+        return None
+    try:
+        with open(SITE_FILE, encoding="utf-8") as f:
+            site = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return None
+    base = (site.get("url") or "").rstrip("/")
+    return f"{base}/posts/{slug}/" if base else None
+
+
+def with_link(text, slug):
+    """本文の末尾に記事URLを付ける。すでにURLが入っていれば触らない。
+
+    post_to_twitter.py は送信時に text[:280] で切り落とす。URLは末尾にあるため、
+    本文が長いとURLだけが欠ける形で投稿されてしまう。それでは付ける意味がないので、
+    はみ出す場合は本文の側を削る。
+    """
+    if "http" in text:
+        return text
+    url = article_url(slug)
+    if not url:
+        return text
+
+    combined = f"{text}\n{url}"
+    if len(combined) <= 280:
+        return combined
+
+    # URLと改行分を確保したうえで本文を詰める
+    room = 280 - len(url) - 1
+    if room <= 0:
+        return text
+    return f"{text[:room - 1]}…\n{url}"
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
@@ -69,7 +117,8 @@ def main():
     for entry in due:
         print(f"Posting queued tweet for {entry.get('article', '?')} (id={entry.get('id')})...")
         try:
-            result = post_tweet(entry["text"], dry_run=args.dry_run)
+            text = with_link(entry["text"], entry.get("article"))
+            result = post_tweet(text, dry_run=args.dry_run)
             print(" ->", result)
             if not args.dry_run:
                 entry["posted"] = True

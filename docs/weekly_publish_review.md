@@ -75,6 +75,28 @@ git add -A src/posts docs && git commit && git push
 - iCloud同期下で `git commit` すると稀に `.git/index.lock` が残ることがある。
   その場合は `/tmp` に `git clone` し、変更ファイルを `rsync` でコピーしてから commit する
 
+## X投稿のコストについて(2026-09-21変更)
+
+**2026-09-21まで、投稿本文に記事URLが入っていなかった。** 「記事はこちら👇」で
+終わっており、投稿済み21件すべてがリンク無し。Xからの流入は1件も発生していなかった。
+
+`post_scheduled_tweets.py` が投稿の直前に `src/_data/site.json` からURLを組み立てて
+付けるようにした。ベタ書きしていないので、独自ドメインへ移行しても自動で追従する。
+
+これにより従量課金の単価が変わる。
+
+```
+リンクなし  $0.015/件
+リンクあり  $0.20/件     ← 今後はこちら
+```
+
+1日2件(hook + cta)のままだと月$12程度。**本数を1日1件に絞れば月$6程度。**
+2026-09-19に承認した6本はhookのみ1件で登録してあるので、その方針で揃えるなら
+既存の予約分も見直す余地がある。
+
+リンクの無い宣伝投稿は実質的な価値がゼロなので、単価が13倍でも流入が発生する方が
+よい、という判断で変更した。
+
 ## 毎日自動で起きること(人間の作業は不要)
 1. GitHub Actionsが毎日09:00 JSTに定期リビルドし、`publishAt`が当日以前になった記事を自動公開する
 2. GitHub Actions(`.github/workflows/post-tweets.yml`、毎日09:30 JST)が `scripts/post_scheduled_tweets.py` を実行し、`tweet_schedule.json`でその日付の`posted: false`エントリを見つけてX APIで実投稿し、`posted: true`と実際の`tweet_id`を記録・commitする
