@@ -11,13 +11,18 @@ decisions.json がダウンロードされる。それを docs/review/ に置い
   python3 scripts/apply_review.py
 を実行すると、フロントマターの書き換えとSNSキューへの登録が行われる。
 
+画面の作り
+----------
+左に記事本文、右に判断パネル(機械チェック・承認/見送り・公開日・SNS)を置く。
+記事は生のMarkdownではなく、実際のサイトに近い見た目に整形して出す。
+レビューで一番時間を使うのは本文を読むことなので、そこを読みやすくしないと
+道具として意味がない。
+
 なぜオフラインHTMLなのか
 ------------------------
-Pinterestの背景写真レビュー(fetch_pin_photo_candidates.py が生成する
-photo_review.html)が同じ方式で、実運用で使いやすかったため踏襲した。
-サーバーを立てる必要がなく、ファイルをダブルクリックするだけで開ける。
+Pinterestの背景写真レビュー(photo_review.html)が同じ方式で実運用に耐えたため
+踏襲した。サーバーを立てる必要がなく、ファイルを開くだけで使える。
 """
-import html
 import json
 import os
 import sys
@@ -28,6 +33,7 @@ from review_lib import (  # noqa: E402
     ROOT, load_config, load_posts, check_article, next_free_slots,
     parse_sns_drafts, internal_links,
 )
+from render_md import md_to_html, outline  # noqa: E402
 
 OUT_DIR = os.path.join(ROOT, "docs", "review")
 OUT_PATH = os.path.join(OUT_DIR, "review.html")
@@ -45,9 +51,8 @@ def latest_cycle_log():
 def match_drafts_to_posts(drafts, drafts_posts):
     """サイクルログの「### 記事N: 見出し」と実ファイルを対応づける。
 
-    見出しは日本語の要約なのでスラッグと直接は一致しない。
-    順番が生成順と一致する前提で並び順マッチを基本にしつつ、
-    見出しの語がタイトルに含まれていればそれを優先する。
+    見出しは内容の要約なのでスラッグとは一致しない。見出しの語がタイトルに
+    含まれていればそれを優先し、なければ生成順に割り当てる。
     """
     result = {}
     used = set()
@@ -94,8 +99,10 @@ def build():
             "slug": p["slug"],
             "title": p["front_matter"].get("title", ""),
             "description": p["front_matter"].get("description", ""),
-            "body": p["body"],
+            "body_html": md_to_html(p["body"], posts),
+            "outline": outline(p["body"]),
             "chars": len(p["body"]),
+            "cta_count": p["body"].count('class="cta-box"'),
             "links": internal_links(p["body"]),
             "suggested_date": planned,
             "issues": [{"severity": s, "message": m} for s, m in issues],
@@ -121,59 +128,97 @@ def build():
 
 
 def render(payload):
-    # 記事本文にはHTMLのCTAボックスが含まれる。仮に "</script>" という文字列が
-    # 入ると、その時点で <script> タグが閉じてしまい画面が壊れる。
+    # 記事本文にはCTAボックスの生HTMLが含まれる。"</script>" という並びが
+    # 入ると、その時点で <script> が閉じて画面が壊れる。
     # JSONのエスケープでは "/" は処理されないので、ここで潰しておく。
     data = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
-    return """<!DOCTYPE html>
+    return TEMPLATE.replace("__DATA__", data)
+
+
+TEMPLATE = """<!DOCTYPE html>
 <html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>週末レビュー</title>
 <style>
-:root{--err:#c0392b;--warn:#b7791f;--ok:#2f855a;--line:#e2e8f0;--muted:#718096}
+:root{--err:#c0392b;--warn:#b7791f;--ok:#2f855a;--line:#e2e8f0;--muted:#718096;
+      --ink:#1a202c;--accent:#2b6cb0}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,"Hiragino Sans",sans-serif;
-  color:#1a202c;background:#f7fafc;line-height:1.7}
+  color:var(--ink);background:#eef2f7;line-height:1.8;font-size:15px}
 header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);
-  padding:12px 20px;display:flex;align-items:center;gap:16px;z-index:10}
-h1{font-size:16px;margin:0}
+  padding:10px 20px;display:flex;align-items:center;gap:14px;z-index:20;flex-wrap:wrap}
+h1{font-size:15px;margin:0}
 .counts{font-size:13px;color:var(--muted)}
-button{font:inherit;padding:8px 16px;border-radius:6px;border:1px solid var(--line);
+.hint{font-size:12px;color:var(--muted)}
+button{font:inherit;padding:7px 14px;border-radius:6px;border:1px solid var(--line);
   background:#fff;cursor:pointer}
-button.primary{background:#2b6cb0;color:#fff;border-color:#2b6cb0}
-main{max-width:960px;margin:0 auto;padding:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:8px;margin-bottom:20px;
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+button.mini{padding:3px 9px;font-size:12px}
+main{max-width:1280px;margin:0 auto;padding:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:22px;
   overflow:hidden}
-.card.approved{border-color:var(--ok);box-shadow:0 0 0 1px var(--ok)}
-.card.skipped{opacity:.55}
-.card.current{box-shadow:0 0 0 3px #bee3f8}
-.card-head{padding:14px 18px;border-bottom:1px solid var(--line)}
-.card-head h2{font-size:15px;margin:0 0 4px}
-.slug{font:12px ui-monospace,monospace;color:var(--muted)}
+.card.approved{box-shadow:0 0 0 2px var(--ok)}
+.card.skipped{opacity:.5}
+.card.current{box-shadow:0 0 0 3px #90cdf4}
+.card-head{padding:14px 18px;background:#fafcff;border-bottom:1px solid var(--line)}
+.card-head h2{font-size:17px;margin:0 0 6px;line-height:1.5}
+.meta{font:12px ui-monospace,monospace;color:var(--muted)}
 .desc{font-size:13px;color:#4a5568;margin-top:6px}
-.section{padding:14px 18px;border-bottom:1px solid var(--line)}
-.section:last-child{border-bottom:none}
-.label{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:8px}
-.issue{font-size:13px;padding:6px 10px;border-radius:4px;margin-bottom:6px}
+.chips{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;background:#edf2f7;color:#4a5568;padding:2px 9px;border-radius:12px}
+.body{display:grid;grid-template-columns:minmax(0,1fr) 330px}
+@media(max-width:980px){.body{grid-template-columns:1fr}}
+.doc{padding:18px 24px;max-height:70vh;overflow:auto;border-right:1px solid var(--line)}
+.doc.full{max-height:none}
+.doc p{margin:0 0 1em}
+.doc h3{font-size:16px;margin:1.6em 0 .6em;padding-left:10px;
+  border-left:4px solid var(--accent)}
+.doc h4{font-size:14px;margin:1.3em 0 .5em}
+.doc ul{margin:0 0 1em;padding-left:1.3em}
+.doc li{margin-bottom:.3em}
+.doc table{border-collapse:collapse;width:100%;margin:1em 0;font-size:13px}
+.doc th,.doc td{border:1px solid var(--line);padding:7px 10px;text-align:left;
+  vertical-align:top}
+.doc th{background:#f7fafc}
+.doc hr{border:none;border-top:1px solid var(--line);margin:1.5em 0}
+.doc code{background:#edf2f7;padding:1px 5px;border-radius:3px;font-size:13px}
+.cta-box{border:1px solid #cbd5e0;background:#fffdf6;border-left:4px solid #dd8b3a;
+  padding:12px 14px;margin:1.2em 0;border-radius:4px;font-size:14px}
+.cta-box .button{display:inline-block;margin-top:8px;color:var(--accent);
+  text-decoration:none;font-weight:600}
+.cta-box .button:hover{text-decoration:underline}
+.ilink{background:#ebf8ff;border-bottom:1px dashed #63b3ed;padding:0 2px}
+.lk-ok{font-size:11px;color:var(--ok);margin-left:5px;white-space:nowrap}
+.lk-bad{font-size:11px;color:var(--err);margin-left:5px;font-weight:600;white-space:nowrap}
+.panel{padding:16px;background:#fafcff}
+.panel-sticky{position:sticky;top:58px}
+.label{font-size:11px;font-weight:700;color:var(--muted);margin:16px 0 7px;
+  letter-spacing:.04em}
+.label:first-child{margin-top:0}
+.issue{font-size:12.5px;padding:7px 10px;border-radius:4px;margin-bottom:6px;line-height:1.6}
 .issue.error{background:#fff5f5;color:var(--err);border-left:3px solid var(--err)}
 .issue.warn{background:#fffaf0;color:var(--warn);border-left:3px solid var(--warn)}
 .clean{font-size:13px;color:var(--ok)}
-.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-input[type=date]{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:4px}
-.sns label{display:block;font-size:13px;padding:8px 10px;border:1px solid var(--line);
-  border-radius:6px;margin-bottom:6px;cursor:pointer}
-.sns label:hover{background:#f7fafc}
-.sns input{margin-right:8px}
-.type{display:inline-block;font:11px ui-monospace,monospace;background:#edf2f7;
-  padding:1px 6px;border-radius:3px;margin-right:6px;color:#4a5568}
-details pre{white-space:pre-wrap;font-size:12px;background:#f7fafc;padding:12px;
-  border-radius:6px;max-height:420px;overflow:auto}
-.hint{font-size:12px;color:var(--muted);margin-left:auto}
+.seg{display:flex;gap:6px}
+.seg button{flex:1}
+.seg button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.seg button.on.skip{background:#718096;border-color:#718096}
+input[type=date]{font:inherit;padding:6px 10px;border:1px solid var(--line);
+  border-radius:4px;width:100%}
+.sns label{display:block;font-size:12.5px;padding:8px 10px;border:1px solid var(--line);
+  border-radius:6px;margin-bottom:6px;cursor:pointer;line-height:1.6;background:#fff}
+.sns label:hover{border-color:#90cdf4}
+.sns input{margin-right:7px}
+.type{display:inline-block;font:10px ui-monospace,monospace;background:#edf2f7;
+  padding:1px 6px;border-radius:3px;margin-right:6px;color:#4a5568;vertical-align:1px}
+.human{font-size:12px;color:var(--muted);background:#fff;border:1px dashed var(--line);
+  border-radius:6px;padding:10px 12px;margin-top:14px;line-height:1.7}
 </style></head><body>
 <header>
   <h1>週末レビュー</h1>
   <span class="counts" id="counts"></span>
-  <span class="hint">j/k 移動 · a 承認 · s 見送り</span>
-  <button class="primary" id="export">決定を書き出す</button>
+  <span class="hint">j/k 移動 · a 承認 · s 見送り · f 本文を全部表示</span>
+  <button class="primary" id="export" style="margin-left:auto">決定を書き出す</button>
 </header>
 <main id="list"></main>
 <script>
@@ -182,54 +227,65 @@ const state = {};
 DATA.items.forEach(it => state[it.slug] = {
   decision: it.issues.some(x=>x.severity==='error') ? null : 'approve',
   date: it.suggested_date,
-  sns: Object.keys(it.sns)[0] || null
+  sns: Object.keys(it.sns)[0] || null,
+  full: false
 });
 let cur = 0;
 
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 
 function render(){
-  const list = document.getElementById('list');
-  list.innerHTML = DATA.items.map((it,i) => {
+  document.getElementById('list').innerHTML = DATA.items.map((it,i) => {
     const st = state[it.slug];
-    const errs = it.issues.filter(x=>x.severity==='error');
-    const cls = [ 'card', st.decision==='approve'?'approved':(st.decision==='skip'?'skipped':''), i===cur?'current':'' ].join(' ');
+    const cls = ['card',
+      st.decision==='approve'?'approved':(st.decision==='skip'?'skipped':''),
+      i===cur?'current':''].join(' ');
+    const snsKeys = Object.keys(it.sns);
     return `<div class="${cls}" id="card-${i}">
       <div class="card-head">
         <h2>${esc(it.title)}</h2>
-        <div class="slug">${esc(it.slug)} · ${it.chars}文字</div>
+        <div class="meta">${esc(it.slug)} · ${it.chars}文字 · CTA ${it.cta_count}箇所</div>
         <div class="desc">${esc(it.description)}</div>
+        <div class="chips">${it.outline.map(h=>`<span class="chip">${esc(h)}</span>`).join('')}</div>
       </div>
-      <div class="section">
-        <div class="label">自動チェック</div>
-        ${it.issues.length === 0 ? '<div class="clean">問題なし</div>' :
-          it.issues.map(x=>`<div class="issue ${x.severity}">${esc(x.message)}</div>`).join('')}
-        ${errs.length ? '<div class="issue error"><b>要修正があるため、初期状態では承認にしていません</b></div>' : ''}
-      </div>
-      <div class="section">
-        <div class="label">判断</div>
-        <div class="row">
-          <label><input type="radio" name="d-${i}" ${st.decision==='approve'?'checked':''}
-            onchange="setDecision('${it.slug}','approve')"> 承認</label>
-          <label><input type="radio" name="d-${i}" ${st.decision==='skip'?'checked':''}
-            onchange="setDecision('${it.slug}','skip')"> 見送り</label>
-          <span style="margin-left:12px">公開日</span>
-          <input type="date" value="${st.date}" onchange="setDate('${it.slug}',this.value)">
+      <div class="body">
+        <div class="doc ${st.full?'full':''}" id="doc-${i}">
+          ${it.body_html}
+          <div style="margin-top:14px">
+            <button class="mini" onclick="toggleFull('${it.slug}')">
+              ${st.full?'高さを戻す':'全文を展開'}</button>
+          </div>
         </div>
-      </div>
-      <div class="section sns">
-        <div class="label">SNS投稿(1つ選ぶ / 選ばないことも可)</div>
-        ${Object.keys(it.sns).length === 0 ? '<div class="clean" style="color:var(--muted)">サイクルログに投稿案が見つかりませんでした</div>' :
-          Object.entries(it.sns).map(([type,text]) => `
-          <label><input type="radio" name="s-${i}" ${st.sns===type?'checked':''}
-            onchange="setSns('${it.slug}','${type}')">
-            <span class="type">${type}</span>${esc(text)}</label>`).join('') +
-          `<label><input type="radio" name="s-${i}" ${st.sns===null?'checked':''}
-            onchange="setSns('${it.slug}',null)">投稿しない</label>`}
-      </div>
-      <div class="section">
-        <details><summary style="cursor:pointer;font-size:13px">本文を読む</summary>
-        <pre>${esc(it.body)}</pre></details>
+        <div class="panel"><div class="panel-sticky">
+          <div class="label">自動チェック</div>
+          ${it.issues.length===0 ? '<div class="clean">問題なし</div>' :
+            it.issues.map(x=>`<div class="issue ${x.severity}">${esc(x.message)}</div>`).join('')}
+
+          <div class="label">判断</div>
+          <div class="seg">
+            <button class="${st.decision==='approve'?'on':''}"
+              onclick="setDecision('${it.slug}','approve')">承認</button>
+            <button class="${st.decision==='skip'?'on skip':''}"
+              onclick="setDecision('${it.slug}','skip')">見送り</button>
+          </div>
+
+          <div class="label">公開日</div>
+          <input type="date" value="${st.date}" onchange="setDate('${it.slug}',this.value)">
+
+          <div class="label">SNS投稿</div>
+          <div class="sns">
+          ${snsKeys.length===0 ? '<div class="clean" style="color:var(--muted)">サイクルログに投稿案が見つかりませんでした</div>' :
+            snsKeys.map(type=>`
+            <label><input type="radio" name="s-${i}" ${st.sns===type?'checked':''}
+              onchange="setSns('${it.slug}','${type}')">
+              <span class="type">${type}</span>${esc(it.sns[type])}</label>`).join('') +
+            `<label><input type="radio" name="s-${i}" ${st.sns===null?'checked':''}
+              onchange="setSns('${it.slug}',null)">投稿しない</label>`}
+          </div>
+
+          <div class="human">機械が見ていないのは、商品が実在するか・数字が正しいか・
+          結論が根拠から導けているか・文章として読めるか。<b>ここに時間を使う。</b></div>
+        </div></div>
       </div>
     </div>`;
   }).join('');
@@ -241,14 +297,17 @@ function render(){
 function setDecision(slug,v){state[slug].decision=v;render()}
 function setDate(slug,v){state[slug].date=v}
 function setSns(slug,v){state[slug].sns=v}
+function toggleFull(slug){state[slug].full=!state[slug].full;render()}
 
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT') return;
   const n = DATA.items.length;
-  if (e.key==='j'){cur=Math.min(cur+1,n-1);render();document.getElementById('card-'+cur).scrollIntoView({block:'center'})}
-  if (e.key==='k'){cur=Math.max(cur-1,0);render();document.getElementById('card-'+cur).scrollIntoView({block:'center'})}
+  const go = () => {render(); document.getElementById('card-'+cur).scrollIntoView({block:'start'})};
+  if (e.key==='j'){cur=Math.min(cur+1,n-1);go()}
+  if (e.key==='k'){cur=Math.max(cur-1,0);go()}
   if (e.key==='a'){setDecision(DATA.items[cur].slug,'approve')}
   if (e.key==='s'){setDecision(DATA.items[cur].slug,'skip')}
+  if (e.key==='f'){toggleFull(DATA.items[cur].slug)}
 });
 
 document.getElementById('export').onclick = () => {
@@ -273,7 +332,7 @@ document.getElementById('export').onclick = () => {
 };
 render();
 </script></body></html>
-""".replace("__DATA__", data)
+"""
 
 
 if __name__ == "__main__":
