@@ -182,6 +182,20 @@ def check_article(post, posts, config, planned_date=None):
     if not links:
         issues.append(("warn", "Amazonリンクが1本も無い"))
 
+    # 3b. CTAで商品名を単品で名指ししていないか(JPの方針。2026-09-21決定)
+    #     このサイトの読者は「何があるのか知らない」段階で来るため、
+    #     単品ではなくカテゴリの入り口を示す。詳細は共通ルールの「CTAの出し方」。
+    #     CTAボックス内の <strong> がラベル(末尾がコロン)になっているかで判定する。
+    if config.get("cta_strong_must_be_label"):
+        for m in re.finditer(r'<div class="cta-box">(.*?)</div>', body, re.S):
+            sm = re.search(r"<strong>(.*?)</strong>", m.group(1), re.S)
+            if sm:
+                t = sm.group(1).strip()
+                if t and not re.search(r"[:：]$", t):
+                    issues.append(("warn",
+                                   f"CTAで商品名を名指ししている可能性: 「{t[:40]}」。"
+                                   "このサイトはカテゴリで示す方針"))
+
     # 4. 断定表現
     # 英語サイトでは大文字小文字が混在するので、常に大小を無視して探す
     for pat in config.get("ng_patterns", []):
