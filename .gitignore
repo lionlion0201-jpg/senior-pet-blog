@@ -6,3 +6,8 @@ __pycache__/
 scripts/_generated_pin_*.png
 scripts/.post_count_state
 scripts/.x_user_id_cache
+
+# 週末レビューの生成物。review.html は build_review.py がいつでも作り直せるし、
+# decisions.json はその回限りの判断結果なので、リポジトリには残さない。
+docs/review/review.html
+docs/review/decisions.json
