@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
-    pathPrefix: "/senior-pet-blog/",
+    pathPrefix: "/",
     dir: {
       input: "src",
       output: "_site",
