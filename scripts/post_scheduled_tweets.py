@@ -114,6 +114,7 @@ def main():
         print(f"No queued tweets due for {target_date}.")
         return
 
+    api_errors = 0
     for entry in due:
         print(f"Posting queued tweet for {entry.get('article', '?')} (id={entry.get('id')})...")
         try:
@@ -129,11 +130,20 @@ def main():
                     entry["tweet_id"] = result["id"]
         except tweepy.TweepyException as e:
             print(f" X API error, leaving in queue for manual retry: {e}", file=sys.stderr)
+            api_errors += 1
         except SystemExit as e:
             print(f" Skipped (rate limit guard): {e}", file=sys.stderr)
 
     if not args.dry_run:
         save_queue(queue)
+
+    # 2026-09-28: 以前はAPIエラーを握りつぶして正常終了していたため、9/22〜9/28に
+    # 11件が未投稿のままワークフローは「成功」表示だった。失敗を Actions 上で見えるようにする。
+    # (成功分の posted 記録は上で保存済み。ワークフロー側のコミットは if: always() で走る)
+    if api_errors:
+        print(f"{api_errors} tweet(s) failed. 402ならX Developer Consoleのクレジット残高を確認。"
+              f" 再投稿は --date {target_date} で手動実行。", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

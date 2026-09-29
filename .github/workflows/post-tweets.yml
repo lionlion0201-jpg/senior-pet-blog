@@ -34,6 +34,8 @@ jobs:
           MAX_POSTS_PER_RUN: "6"
         run: python3 scripts/post_scheduled_tweets.py
       - name: Commit updated tweet_schedule.json (posted status)
+        # 一部失敗でも成功分の posted / tweet_id は残す(メトリクス取得にtweet_idが要る。手動の--date再実行時の二重投稿も防ぐ)
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
