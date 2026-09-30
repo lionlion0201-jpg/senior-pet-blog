@@ -1,0 +1,34 @@
+[
+  {
+    "article": "",
+    "source": "(not set)",
+    "affiliate_clicks": 0,
+    "sessions": 2,
+    "period_start": "2026-09-21",
+    "period_end": "2026-09-30"
+  },
+  {
+    "article": "/",
+    "source": "(direct)",
+    "affiliate_clicks": 0,
+    "sessions": 63,
+    "period_start": "2026-09-21",
+    "period_end": "2026-09-30"
+  },
+  {
+    "article": "/",
+    "source": "bing",
+    "affiliate_clicks": 0,
+    "sessions": 1,
+    "period_start": "2026-09-21",
+    "period_end": "2026-09-30"
+  },
+  {
+    "article": "/",
+    "source": "secure.moshimo.com",
+    "affiliate_clicks": 0,
+    "sessions": 2,
+    "period_start": "2026-09-21",
+    "period_end": "2026-09-30"
+  }
+]
