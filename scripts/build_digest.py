@@ -184,7 +184,11 @@ def today_str():
 
 # ---------------------------------------------------------------- 表示
 def fmt(v):
-    return NA if v is None else f"{v:,}"
+    if v is None:
+        return NA
+    if isinstance(v, float) and v.is_integer():
+        v = int(v)  # Pinterest API は回数を 0.0 のような小数で返すことがある
+    return f"{v:,}"
 
 
 def ssum(vals):
@@ -269,7 +273,13 @@ def build(today):
         for t in types:
             g = [p for p in cmp if (p["type"] or "不明") == t]
             m = [p for p in g if p["impression"] is not None]
-            verdict = "判断可(ただしクリック未取得なら保留)" if len(m) >= MIN_POSTS_PER_TYPE else "**データ不足**(従来方針を維持)"
+            if t == "不明":
+                # 型の記録が無い投稿の寄せ集め。件数が多くても比較の材料にならない
+                verdict = "比較対象外(型が記録されていない)"
+            elif len(m) >= MIN_POSTS_PER_TYPE:
+                verdict = "判断可(ただしクリック未取得なら保留)"
+            else:
+                verdict = "**データ不足**(従来方針を維持)"
             L.append(f"| {t} | {len(g)} | {len(m)} | {MIN_POSTS_PER_TYPE} | {verdict} |")
         excluded = [p for p in xposts if not p["link_era"]]
         if excluded:
