@@ -38,7 +38,10 @@ jobs:
           python-version: "3.11"
       - run: pip install -r scripts/requirements.txt
 
+      # X が失敗しても GA4 の取得とコミットは続ける(失敗は最後のステップで表に出す)
       - name: Fetch metrics
+        id: fetch_x
+        continue-on-error: true
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
@@ -51,14 +54,34 @@ jobs:
           python3 scripts/fetch_tweet_metrics.py \
             --max-results "${{ github.event.inputs.max_results || '25' }}"
 
+      # アフィリエイトリンクのクリック(affiliate_click)とセッション
+      - name: Fetch GA4 clicks
+        id: fetch_ga4
+        continue-on-error: true
+        env:
+          GA4_SA_KEY: ${{ secrets.GA4_SA_KEY }}
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+        run: python3 scripts/fetch_ga4.py --days 30
+
       - name: Commit engagement log
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- docs/engagement_log.json; then
-            git add docs/engagement_log.json
+          for f in docs/engagement_log.json docs/metrics/ga4_clicks.json docs/metrics/ga4_products.json; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
+          if ! git diff --cached --quiet; then
             git commit -m "chore: update tweet engagement metrics [skip ci]"
+            git pull --rebase --autostash
             git push
           else
             echo "No metric changes to commit."
           fi
+
+      - name: Report fetch failures
+        if: steps.fetch_x.outcome == 'failure' || steps.fetch_ga4.outcome == 'failure'
+        run: |
+          echo "X: ${{ steps.fetch_x.outcome }} / GA4: ${{ steps.fetch_ga4.outcome }}"
+          echo "X が failure なら Fetch metrics のログを確認(402=クレジット残高不足)。"
+          echo "GA4 が failure なら GA4_SA_KEY / GA4_PROPERTY_ID の登録と、サービスアカウントがプロパティの閲覧者になっているかを確認。"
+          exit 1
