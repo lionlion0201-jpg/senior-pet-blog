@@ -76,12 +76,31 @@ def article_url(slug):
     return f"{base}/posts/{slug}/" if base else None
 
 
+X_LIMIT = 280
+X_URL_WEIGHT = 23  # t.co 短縮後の長さ。URLの実際の長さに関係なく23で数えられる
+
+
+def char_weight(ch):
+    """X の文字数の数え方(twitter-text の既定設定)での1文字の重み。
+
+    ラテン文字・一般的な記号は1、それ以外(日本語・絵文字など)は2。
+    2026-09-22 の2件は len() では280以内でも、この数え方では超過しており 403 で拒否された。
+    """
+    cp = ord(ch)
+    if (cp <= 0x10FF or 0x2000 <= cp <= 0x200D or 0x2010 <= cp <= 0x201F
+            or 0x2032 <= cp <= 0x2037):
+        return 1
+    return 2
+
+
+def x_length(text):
+    return sum(char_weight(c) for c in text)
+
+
 def with_link(text, slug):
     """本文の末尾に記事URLを付ける。すでにURLが入っていれば触らない。
 
-    post_to_twitter.py は送信時に text[:280] で切り落とす。URLは末尾にあるため、
-    本文が長いとURLだけが欠ける形で投稿されてしまう。それでは付ける意味がないので、
-    はみ出す場合は本文の側を削る。
+    X の上限(日本語は1文字2、URLは23で数える)を超える場合は、URLが欠けないよう本文の側を削る。
     """
     if "http" in text:
         return text
@@ -89,15 +108,28 @@ def with_link(text, slug):
     if not url:
         return text
 
-    combined = f"{text}\n{url}"
-    if len(combined) <= 280:
-        return combined
+    # 本文 + 改行(1) + URL(23)
+    room = X_LIMIT - 1 - X_URL_WEIGHT
+    if x_length(text) <= room:
+        return f"{text}\n{url}"
 
-    # URLと改行分を確保したうえで本文を詰める
-    room = 280 - len(url) - 1
-    if room <= 0:
-        return text
-    return f"{text[:room - 1]}…\n{url}"
+    # まず末尾の行(ハッシュタグ行など)から丸ごと外す。文の途中で切れるのを避けるため
+    lines = text.rstrip().split("\n")
+    while len(lines) > 1:
+        lines.pop()
+        trimmed = "\n".join(lines).rstrip()
+        if x_length(trimmed) <= room:
+            return f"{trimmed}\n{url}"
+
+    # 1行でも収まらないときだけ、「…」(重み2)の分を空けて本文を詰める
+    cut, used = [], 0
+    for c in text:
+        w = char_weight(c)
+        if used + w > room - 2:
+            break
+        cut.append(c)
+        used += w
+    return f"{''.join(cut).rstrip()}…\n{url}"
 
 
 def main():

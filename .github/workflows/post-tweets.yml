@@ -8,6 +8,11 @@ on:
     # 毎日 09:30 JST (00:30 UTC)。09:00 JSTの記事デプロイの少し後に実行する(2026-09-06に火木土から毎日へ変更)。
     - cron: "30 0 * * *"
   workflow_dispatch:
+    inputs:
+      date:
+        description: "投稿し損ねた日の分を再投稿するときの日付(YYYY-MM-DD, JST)。空なら今日の分"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -32,7 +37,8 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           MAX_POSTS_PER_RUN: "6"
-        run: python3 scripts/post_scheduled_tweets.py
+          TARGET_DATE: ${{ github.event.inputs.date }}
+        run: python3 scripts/post_scheduled_tweets.py ${TARGET_DATE:+--date "$TARGET_DATE"}
       - name: Commit updated tweet_schedule.json (posted status)
         # 一部失敗でも成功分の posted / tweet_id は残す(メトリクス取得にtweet_idが要る。手動の--date再実行時の二重投稿も防ぐ)
         if: always()
