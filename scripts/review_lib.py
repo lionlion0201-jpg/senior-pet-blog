@@ -108,27 +108,45 @@ def internal_links(body):
 
 
 def next_free_slots(posts, count, start_from=None):
-    """publishAt が埋まっていない日を count 日分、連続で提案する。
+    """publishAt が埋まっていない日を count 日分提案する。
 
-    既存の予約が途切れなく続いている前提で、その翌日から詰める。
+    途中に空き日があればそちらを先に埋め、無くなったら最終日の翌日から続ける
+    (2026-09-29変更。以前は最終日の翌日からしか提案しなかったため、
+     季節ものやセール前など「この日に出したい」記事を差し込んだあとに
+     できた穴が埋まらず、公開が途切れる日ができていた)。
+
+    start_from を指定しない場合は翌日から探す。今日はビルド済みなので使わない。
     """
     used = set()
     for p in posts.values():
         d = p["publish_date"]
         if d and d != "0000-00-00":
             used.add(d)
-    cursor = date.fromisoformat(start_from) if start_from else date.today()
-    if used:
-        latest = max(used)
-        cand = date.fromisoformat(latest) + timedelta(days=1)
-        if cand > cursor:
-            cursor = cand
+
+    start = (date.fromisoformat(start_from) if start_from
+             else date.today() + timedelta(days=1))
     slots = []
+
+    # 1) 既存の予約のあいだに空いている日を先に埋める
+    if used:
+        cursor = start
+        latest = date.fromisoformat(max(used))
+        while cursor <= latest and len(slots) < count:
+            s = cursor.isoformat()
+            if s not in used:
+                slots.append(s)
+            cursor += timedelta(days=1)
+        cursor = latest + timedelta(days=1)
+    else:
+        cursor = start
+
+    # 2) 足りない分は最終日の翌日から続ける
     while len(slots) < count:
         s = cursor.isoformat()
-        if s not in used:
+        if s not in used and s not in slots:
             slots.append(s)
         cursor += timedelta(days=1)
+
     return slots
 
 
@@ -222,6 +240,129 @@ def check_article(post, posts, config, planned_date=None):
     # 7. 分量
     if len(body) < 2000:
         issues.append(("warn", f"本文が短い({len(body)}文字)。他記事は4000〜6000文字程度"))
+
+    # 8. Amazonアソシエイト規約まわり(2026-09-29追加)
+    issues.extend(check_amazon_policy(body, config))
+
+    return issues
+
+
+# --- Amazonアソシエイト規約に関するチェック -------------------------------
+#
+# 根拠(2026-09-29に一次情報を確認):
+#  JP「商品の紹介で注意すべきことは何ですか?」
+#    https://affiliate.amazon.co.jp/help/node/topic/GKT6X2R3NGW5V23K
+#    - 価格や在庫を書く場合は「いつの時点の情報か」を明記すること
+#    - 配送料無料の表記は決められた言い回しのいずれかを使うこと
+#    - Amazonの商品画像の加工・再アップロード・画面キャプチャは不可
+#  JP「クーポンのコードを自分のWebサイトに掲載してもよいですか?」
+#    https://affiliate.amazon.co.jp/help/node/topic/GUPDNS3EVD952D97
+#    - 掲載不可。違反するとアカウント閉鎖や紹介料差し押さえの可能性
+#  US Operating Agreement / Policies
+#    https://affiliate-program.amazon.com/help/operating/policies
+#    - 価格・在庫の表示は Amazon が配信するリンク、または PA-API / Creators API
+#      経由で取得した場合に限られる(手書きの価格は不可。JPより厳しい)
+#    - 期間限定プロモーションへのリンクおよび関連する記述は、
+#      プロモーション終了と同時にサイトから削除すること
+#
+# 運用方針: 価格は書かない。セール告知は campaign.js の時限ブロックに閉じ込める。
+# 詳しくは共通ルールの「セール記事の書き方」を参照。
+
+# 配送料無料として使ってよい言い回し(JPヘルプに列挙されているもの)
+SHIPPING_OK_PHRASES = [
+    "配送料無料(一部除く)",
+    "配送料無料（一部除く）",
+    "通常配送無料(一部除く)",
+    "通常配送無料（一部除く）",
+    "Amazon.co.jpが発送する商品は、配送料無料(条件あり)",
+    "Amazon.co.jpが発送する商品は、配送料無料（条件あり）",
+]
+
+# 「いつ時点の情報か」を示していると見なす手がかり
+AS_OF_HINTS = ["時点", "as of", "現在の価格", "確認した"]
+
+# 期間限定プロモーションを指す語。時限ブロックの外に出ていたら警告する
+PROMO_WORDS = [
+    "プライム感謝祭", "プライムデー", "ブラックフライデー", "サイバーマンデー",
+    "初売り", "タイムセール祭り", "Prime Day", "Black Friday", "Cyber Monday",
+]
+
+
+def _strip_campaign_blocks(body):
+    """{% if campaign... %} ... {% endif %} の中身を取り除いた本文を返す。
+
+    時限ブロックの中に書かれたセール告知は、終了後に自動で消えるので
+    規約上の「終了したら削除」を満たしている。外にあるものだけを問題にする。
+    """
+    return re.sub(r"\{%-?\s*if\s+campaign.*?\{%-?\s*endif\s*-?%\}", "", body, flags=re.S)
+
+
+def check_amazon_policy(body, config):
+    issues = []
+    lang = config.get("lang", "ja")
+    outside = _strip_campaign_blocks(body)
+
+    # 8a. 価格の記載
+    if lang == "ja":
+        price_hits = re.findall(r"[0-9０-９][0-9０-９,，]*\s*円", body)
+    else:
+        price_hits = re.findall(r"\$\s?[0-9][0-9,]*(?:\.[0-9]{2})?", body)
+    if price_hits:
+        dated = any(h in body for h in AS_OF_HINTS)
+        if lang == "ja" and dated:
+            issues.append(("warn",
+                           f"価格らしい記載がある: {', '.join(price_hits[:3])}。"
+                           "「いつ時点か」は書かれているようだが、"
+                           "古くなると規約違反になる。原則は価格を書かない運用"))
+        elif lang == "ja":
+            issues.append(("error",
+                           f"価格を書いている: {', '.join(price_hits[:3])}。"
+                           "JPは「いつ時点の情報か」の明記が必須。"
+                           "このサイトは価格を書かない方針なので削除する"))
+        else:
+            issues.append(("error",
+                           f"Price written by hand: {', '.join(price_hits[:3])}. "
+                           "US policy allows prices only from Amazon-served links "
+                           "or PA-API / Creators API. Remove it."))
+
+    # 8b. 割引率・値引き幅の記載(いつ時点かに関わらず、終了後に残ると違反)
+    off_hits = re.findall(r"[0-9０-９]+\s*(?:%|％)\s*(?:オフ|OFF|off|引き|割引)", body)
+    off_hits += re.findall(r"(?:半額|最大[0-9０-９]+\s*(?:%|％))", body)
+    if off_hits:
+        issues.append(("error",
+                       f"値引き率を書いている: {', '.join(off_hits[:3])}。"
+                       "対象も率も変動し、終了後に残ると規約違反になる"))
+
+    # 8c. 配送料無料の表記ゆれ
+    if re.search(r"(送料|配送料)\s*(が)?\s*(無料|0円|タダ)|free shipping", body, re.I):
+        if not any(p in body for p in SHIPPING_OK_PHRASES):
+            issues.append(("error",
+                           "配送料無料の書き方が規約の指定表現と一致していない。"
+                           "「配送料無料(一部除く)」「通常配送無料(一部除く)」"
+                           "「Amazon.co.jpが発送する商品は、配送料無料(条件あり)」"
+                           "のいずれかを使うこと"))
+
+    # 8d. クーポンコード(掲載自体が禁止)
+    if re.search(r"クーポンコード|プロモーションコード|coupon code|promo code", body, re.I):
+        issues.append(("error",
+                       "クーポンコードの掲載は禁止されている"
+                       "(アカウント閉鎖・紹介料差し押さえの対象)"))
+
+    # 8e. 期間限定プロモーションの言及が時限ブロックの外に出ていないか
+    for w in PROMO_WORDS:
+        if w in outside:
+            issues.append(("error",
+                           f"「{w}」が時限ブロックの外にある。"
+                           "期間限定プロモーションへの言及は終了と同時に"
+                           "削除する必要がある。"
+                           "{% if campaign.phase %} ... {% endif %} の中に入れること"))
+            break
+
+    # 8f. Amazonの商品画像を直接使っていないか
+    if re.search(r"(images-amazon|media-amazon|ssl-images-amazon)", body):
+        issues.append(("error",
+                       "Amazonの画像URLを直接埋め込んでいる。"
+                       "商品画像の利用はAmazonが提供するリンク経由に限られる"))
 
     return issues
 
