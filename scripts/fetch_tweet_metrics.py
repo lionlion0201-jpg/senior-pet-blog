@@ -78,7 +78,9 @@ def get_own_user_id(client, dry_run=False):
         print("[DRY RUN] Would call GET /2/users/me to resolve + cache own user ID (one-time ~$0.01)")
         return "DRY_RUN_USER_ID"
 
-    me = client.get_me()
+    # user_auth=True が無いと tweepy はベアラートークンで認証しようとする。
+    # ベアラートークンは渡していないので 401 Unauthorized になる(2026-09-20〜30 の全失敗の原因)。
+    me = client.get_me(user_auth=True)
     user_id = str(me.data.id)
     with open(USER_ID_CACHE, "w") as f:
         f.write(user_id)
@@ -127,6 +129,7 @@ def main():
             id=user_id,
             max_results=max(5, min(args.max_results, 100)),
             tweet_fields=["public_metrics", "created_at"],
+            user_auth=True,  # 上の get_me と同じ理由
         )
     except tweepy.TweepyException as e:
         print(f"X API error while fetching metrics: {e}", file=sys.stderr)
