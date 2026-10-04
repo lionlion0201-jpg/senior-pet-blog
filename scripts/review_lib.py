@@ -136,7 +136,8 @@ def next_free_slots(posts, count, start_from=None):
             if s not in used:
                 slots.append(s)
             cursor += timedelta(days=1)
-        cursor = latest + timedelta(days=1)
+        # 既存の予約がすべて過去なら、過去日を提案しないよう start から続ける
+        cursor = max(latest + timedelta(days=1), start)
     else:
         cursor = start
 
@@ -380,7 +381,7 @@ def parse_sns_drafts(cycle_log_path):
         return []
     with open(cycle_log_path, encoding="utf-8") as f:
         text = f.read()
-    section = re.search(r"^## .*プロモーター出力.*$(.*?)(?=^## )", text, re.M | re.S)
+    section = re.search(r"^## [^\n]*プロモーター出力[^\n]*$(.*?)(?=^## |\Z)", text, re.M | re.S)
     if not section:
         return []
     blocks = []
