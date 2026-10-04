@@ -1,19 +1,27 @@
 [
   {
+    "article": "",
+    "source": "(not set)",
+    "affiliate_clicks": 0,
+    "sessions": 1,
+    "period_start": "2026-09-21",
+    "period_end": "2026-10-05"
+  },
+  {
     "article": "(not set)/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-04"
+    "period_end": "2026-10-05"
   },
   {
     "article": "/",
     "source": "(direct)",
     "affiliate_clicks": 0,
-    "sessions": 72,
+    "sessions": 76,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-04"
+    "period_end": "2026-10-05"
   },
   {
     "article": "/",
@@ -21,7 +29,7 @@
     "affiliate_clicks": 0,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-04"
+    "period_end": "2026-10-05"
   },
   {
     "article": "/",
@@ -29,7 +37,7 @@
     "affiliate_clicks": 0,
     "sessions": 2,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-04"
+    "period_end": "2026-10-05"
   },
   {
     "article": "/posts/rougan-rouneko-shoushuu-kuuki-seijou/",
@@ -37,6 +45,6 @@
     "affiliate_clicks": 1,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-04"
+    "period_end": "2026-10-05"
   }
 ]

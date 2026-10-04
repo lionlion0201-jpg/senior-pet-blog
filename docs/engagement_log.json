@@ -1690,5 +1690,29 @@
     "retweet_count": 0,
     "reply_count": 0,
     "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-05T02:14:43.404313+09:00",
+    "tweet_id": "2106627905232986234",
+    "article": "senior-pet-tsuuin-carry-erabikata",
+    "type": "hook",
+    "posted_date": "2026-10-04",
+    "impression_count": 8,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-05T02:14:43.404313+09:00",
+    "tweet_id": "2106627903890833436",
+    "article": "senior-pet-tsuuin-carry-erabikata",
+    "type": "cta",
+    "posted_date": "2026-10-04",
+    "impression_count": 1,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
   }
 ]
