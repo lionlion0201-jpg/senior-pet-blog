@@ -34,6 +34,7 @@ from datetime import datetime, timezone, timedelta
 sys.path.insert(0, os.path.dirname(__file__))
 from post_to_twitter import post_tweet  # noqa: E402
 import tweepy  # noqa: E402
+import requests  # noqa: E402
 
 QUEUE_FILE = os.path.join(os.path.dirname(__file__), "..", "docs", "tweet_schedule.json")
 JST = timezone(timedelta(hours=9))
@@ -132,6 +133,13 @@ def with_link(text, slug):
     return f"{''.join(cut).rstrip()}…\n{url}"
 
 
+def is_live(url):
+    try:
+        return requests.head(url, timeout=15, allow_redirects=True).status_code == 200
+    except requests.RequestException:
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
@@ -148,6 +156,13 @@ def main():
 
     api_errors = 0
     for entry in due:
+        # 記事ページがまだ開けない(デプロイが遅れている)ならリンク切れを投稿しないよう後回しにする。
+        # GitHub の定期実行は数時間遅れることがあり、デプロイより先に投稿が走る可能性がある。
+        # 同じ日の午後の再実行(post-tweets.yml の2本目の cron)で拾う。
+        url = article_url(entry.get("article"))
+        if url and not args.dry_run and not is_live(url):
+            print(f"Waiting: {url} がまだ開けないので {entry.get('id')} は後で投稿します")
+            continue
         print(f"Posting queued tweet for {entry.get('article', '?')} (id={entry.get('id')})...")
         try:
             text = with_link(entry["text"], entry.get("article"))
