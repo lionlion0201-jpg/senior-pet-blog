@@ -1762,5 +1762,53 @@
     "retweet_count": 0,
     "reply_count": 0,
     "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-07T03:44:16.160313+09:00",
+    "tweet_id": "2106988133313085778",
+    "article": "shinia-neko-toire-minaoshi",
+    "type": "hook",
+    "posted_date": "2026-10-05",
+    "impression_count": 2,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-07T03:44:16.160313+09:00",
+    "tweet_id": "2106988132046344349",
+    "article": "shinia-neko-toire-minaoshi",
+    "type": "cta",
+    "posted_date": "2026-10-05",
+    "impression_count": 1,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-07T03:44:16.160313+09:00",
+    "tweet_id": "2106627905232986234",
+    "article": "senior-pet-tsuuin-carry-erabikata",
+    "type": "hook",
+    "posted_date": "2026-10-04",
+    "impression_count": 19,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-07T03:44:16.160313+09:00",
+    "tweet_id": "2106627903890833436",
+    "article": "senior-pet-tsuuin-carry-erabikata",
+    "type": "cta",
+    "posted_date": "2026-10-04",
+    "impression_count": 14,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
   }
 ]
