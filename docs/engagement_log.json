@@ -1882,5 +1882,101 @@
     "retweet_count": 0,
     "reply_count": 0,
     "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2108081597585211447",
+    "article": "rougan-rouneko-benpi-onaka-care",
+    "type": "hook",
+    "posted_date": "2026-10-08",
+    "impression_count": 1,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2108081595848790428",
+    "article": "rougan-rouneko-benpi-onaka-care",
+    "type": "cta",
+    "posted_date": "2026-10-08",
+    "impression_count": 1,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2107716805456175438",
+    "article": "rouneko-jampuryoku-teika-cat-tower",
+    "type": "hook",
+    "posted_date": "2026-10-07",
+    "impression_count": 0,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2107716804122493400",
+    "article": "rouneko-jampuryoku-teika-cat-tower",
+    "type": "cta",
+    "posted_date": "2026-10-07",
+    "impression_count": 1,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2106988133313085778",
+    "article": "shinia-neko-toire-minaoshi",
+    "type": "hook",
+    "posted_date": "2026-10-05",
+    "impression_count": 3,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2106988132046344349",
+    "article": "shinia-neko-toire-minaoshi",
+    "type": "cta",
+    "posted_date": "2026-10-05",
+    "impression_count": 1,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2106627905232986234",
+    "article": "senior-pet-tsuuin-carry-erabikata",
+    "type": "hook",
+    "posted_date": "2026-10-04",
+    "impression_count": 22,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
+  },
+  {
+    "checked_at": "2026-10-09T04:07:00.875128+09:00",
+    "tweet_id": "2106627903890833436",
+    "article": "senior-pet-tsuuin-carry-erabikata",
+    "type": "cta",
+    "posted_date": "2026-10-04",
+    "impression_count": 19,
+    "like_count": 0,
+    "retweet_count": 0,
+    "reply_count": 0,
+    "quote_count": 0
   }
 ]
