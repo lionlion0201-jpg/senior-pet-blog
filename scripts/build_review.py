@@ -25,6 +25,7 @@ Pinterestの背景写真レビュー(photo_review.html)が同じ方式で実運�
 """
 import json
 import os
+import re
 import sys
 from datetime import date
 
@@ -48,11 +49,37 @@ def latest_cycle_log():
     return os.path.join(d, logs[-1]) if logs else None
 
 
+def _bigrams(s):
+    s = re.sub(r"[\s・|｜:：、。,.!?！？「」()()\-]", "", s)
+    return {s[i:i + 2] for i in range(len(s) - 1)}
+
+
+def _match_score(block, post):
+    """投稿案(見出し+本文)と記事(タイトル+説明文)の近さ。
+
+    見出しがタイトルにそのまま含まれていれば最優先。それ以外は、見出しと投稿案の本文を
+    合わせた文字列と、記事のタイトル・説明文とで、2文字ずつの組がいくつ重なるかで測る
+    (日本語は単語の区切りが無いため)。
+    2026-10-10: 以前は「見出しがタイトルに含まれるか」だけで判定し、外れると
+    下書きのスラッグ順に割り当てていた。見出しの言い回しがタイトルと少しでも違うと、
+    SNS投稿案が別の記事に付いたまま投稿キューに入るおそれがあった(US では実際に入れ違った)。
+    過去のサイクルログ27件で、全記事を相手にしても正しい記事が最上位になることを確認済み。
+    """
+    head = block["heading"]
+    key = head.split(":", 1)[-1].strip() if ":" in head else head
+    fm = post["front_matter"]
+    if key and key in fm.get("title", ""):
+        return 1000
+    mine = _bigrams(key + "".join(block["drafts"].values()))
+    theirs = _bigrams(fm.get("title", "") + fm.get("description", ""))
+    return len(mine & theirs)
+
+
 def match_drafts_to_posts(drafts, drafts_posts, all_posts=None):
     """サイクルログの「### 記事N: 見出し」と実ファイルを対応づける。
 
-    見出しは内容の要約なのでスラッグとは一致しない。見出しの語がタイトルに
-    含まれていればそれを優先し、なければ生成順に割り当てる。
+    見出しは内容の要約なのでスラッグとは一致しない。見出しとタイトルが最も近い記事
+    (_match_score)に割り当て、どれとも近くなければ生成順に割り当てる。
     """
     result = {}
     used = set()
@@ -60,13 +87,13 @@ def match_drafts_to_posts(drafts, drafts_posts, all_posts=None):
         head = block["heading"]
         key = head.split(":", 1)[-1].strip() if ":" in head else head
         hit = None
+        best_score = 0
         for p in drafts_posts:
             if p["slug"] in used:
                 continue
-            title = p["front_matter"].get("title", "")
-            if key and (key in title or any(w in title for w in key.split() if len(w) > 2)):
-                hit = p
-                break
+            score = _match_score(block, p)
+            if score > best_score:
+                hit, best_score = p, score
         # 見出しが承認済み(下書きでない)記事のタイトルに含まれるなら、その案は
         # すでに使われたもの。生成順の割り当てで新しい下書きに付けない
         if hit is None and all_posts and key and any(
