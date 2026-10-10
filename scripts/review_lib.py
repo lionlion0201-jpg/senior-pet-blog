@@ -162,7 +162,21 @@ def check_article(post, posts, config, planned_date=None):
 
     # 1. 内部リンク先の公開日順序。リンク先がまだ公開されていないと404になる。
     #    2026-09-19にページ出力を止めた副作用で生まれた制約。目視では追えない。
-    for slug in internal_links(body):
+    #    ただし {% whenPublished "slug" %}...{% endwhenPublished %} の中にある
+    #    同じ slug へのリンクは、リンク先の公開後のビルドでしか出力されないので順序を問わない
+    #    (存在するかだけ見る)。ブロックの外にある同じ slug へのリンクは通常どおり見る。
+    block_re = re.compile(r'\{%-?\s*whenPublished\s+"([a-z0-9-]+)"\s*-?%\}(.*?)'
+                          r'\{%-?\s*endwhenPublished\s*-?%\}', re.S)
+    unguarded_body = body
+    for gm in block_re.finditer(body):
+        gslug, inner = gm.group(1), gm.group(2)
+        if gslug not in posts:
+            issues.append(("error", f"whenPublished の対象記事が存在しない: {gslug}"))
+        for s in internal_links(inner):
+            if s != gslug:
+                issues.append(("error", f"whenPublished \"{gslug}\" の中に別の記事へのリンクがある: {s}"))
+        unguarded_body = unguarded_body.replace(gm.group(0), "")
+    for slug in internal_links(unguarded_body):
         target = posts.get(slug)
         if target is None:
             issues.append(("error", f"リンク先の記事が存在しない: {slug}"))

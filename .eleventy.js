@@ -1,5 +1,5 @@
 const { DateTime } = require("luxon");
-const { isPublished } = require("./lib/publishing");
+const { isPublished, isSlugPublished } = require("./lib/publishing");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
@@ -15,6 +15,13 @@ module.exports = function (eleventyConfig) {
       .filter((item) => isPublished(item.data, now))
       .sort((a, b) => b.date - a.date);
   });
+
+  // 予約公開の記事へのリンクを、リンク先が公開されたビルドから表示する。
+  //   {% whenPublished "slug" %}...[記事]({{ '/posts/slug/' | url }})...{% endwhenPublished %}
+  // リンク先が未公開の間は中身を丸ごと出さない(404のリンクを作らない)。
+  eleventyConfig.addPairedShortcode("whenPublished", (content, slug) =>
+    isSlugPublished(slug) ? content : ""
+  );
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).setLocale("ja").toFormat("yyyy年LL月dd日");
