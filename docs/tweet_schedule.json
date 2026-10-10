@@ -1,59 +1,5 @@
 [
   {
-    "id": "2026-09-07-rougan-rouneko-drive-anzen-guzzu-cta",
-    "date": "2026-09-07",
-    "article": "rougan-rouneko-drive-anzen-guzzu",
-    "type": "cta",
-    "text": "老犬・老猫の車でのお出かけ、ドライブボックス・車用シートベルト・ドライブシートの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #ドライブ対策",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-07-rougan-rouneko-drive-anzen-guzzu-hook",
-    "date": "2026-09-07",
-    "article": "rougan-rouneko-drive-anzen-guzzu",
-    "type": "hook",
-    "text": "「急ブレーキのときにヒヤッとした」——シニア期の車移動、体を支える力の変化に合わせて車内の安全対策を見直しませんか🐾\n記事はこちら👇\n#老犬 #老猫 #車移動",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-08-shinia-neko-insui-jinzou-care-cta",
-    "date": "2026-09-08",
-    "article": "shinia-neko-insui-jinzou-care",
-    "type": "cta",
-    "text": "シニア猫の飲水量が気になったら、給水ボウル・腎臓の健康に配慮したフード・尿チェック猫砂の選び方と、動物病院に相談すべきサインをまとめました。\n記事はこちら👇\n#シニア猫 #腎臓の健康ケア",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-08-shinia-neko-insui-jinzou-care-hook",
-    "date": "2026-09-08",
-    "article": "shinia-neko-insui-jinzou-care",
-    "type": "hook",
-    "text": "「最近やたら水を飲みに行く気がする」——シニア猫に見られやすい飲水量の変化、まずは日々の量を把握することから始めてみませんか🐾\n記事はこちら👇\n#シニア猫 #猫の腎臓ケア",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-09-rougan-rouneko-massage-kekkou-care-cta",
-    "date": "2026-09-09",
-    "article": "rougan-rouneko-massage-kekkou-care",
-    "type": "cta",
-    "text": "老犬・老猫のセルフマッサージ・血行ケア用品、マッサージコーム・ハンディマッサージャー・温感ケアグッズの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #セルフケア",
-    "posted": false,
-    "posted_at": null
-  },
-  {
-    "id": "2026-09-09-rougan-rouneko-massage-kekkou-care-hook",
-    "date": "2026-09-09",
-    "article": "rougan-rouneko-massage-kekkou-care",
-    "type": "hook",
-    "text": "散歩のあと、なんとなく体をこわばらせている気がする——スキンシップの延長でできるセルフマッサージ、取り入れてみませんか🐾\n記事はこちら👇\n#老犬 #老猫 #セルフマッサージ",
-    "posted": false,
-    "posted_at": null
-  },
-  {
     "id": "2026-09-10-rougan-rouneko-ochitsukanai-anshin-care-cta",
     "date": "2026-09-10",
     "article": "rougan-rouneko-ochitsukanai-anshin-care",
@@ -813,6 +759,96 @@
     "posted_at": null
   },
   {
+    "id": "2026-10-24-rougan-rouneko-drive-anzen-guzzu-cta",
+    "date": "2026-10-24",
+    "article": "rougan-rouneko-drive-anzen-guzzu",
+    "type": "cta",
+    "text": "老犬・老猫の車でのお出かけ、ドライブボックス・車用シートベルト・ドライブシートの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #ドライブ対策",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-24-rougan-rouneko-drive-anzen-guzzu-hook",
+    "date": "2026-10-24",
+    "article": "rougan-rouneko-drive-anzen-guzzu",
+    "type": "hook",
+    "text": "「急ブレーキのときにヒヤッとした」——シニア期の車移動、体を支える力の変化に合わせて車内の安全対策を見直しませんか🐾\n記事はこちら👇\n#老犬 #老猫 #車移動",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-24-rougan-rouneko-dassou-boushi-guzzu-hook",
+    "date": "2026-10-24",
+    "article": "rougan-rouneko-dassou-boushi-guzzu",
+    "type": "hook",
+    "text": "網戸を自分で開けてすり抜けそうになった…そんな経験はありませんか?GPSや迷子札の前に、そもそも防ぐ対策もあります🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-25-shinia-neko-insui-jinzou-care-cta",
+    "date": "2026-10-25",
+    "article": "shinia-neko-insui-jinzou-care",
+    "type": "cta",
+    "text": "シニア猫の飲水量が気になったら、給水ボウル・腎臓の健康に配慮したフード・尿チェック猫砂の選び方と、動物病院に相談すべきサインをまとめました。\n記事はこちら👇\n#シニア猫 #腎臓の健康ケア",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-25-shinia-neko-insui-jinzou-care-hook",
+    "date": "2026-10-25",
+    "article": "shinia-neko-insui-jinzou-care",
+    "type": "hook",
+    "text": "「最近やたら水を飲みに行く気がする」——シニア猫に見られやすい飲水量の変化、まずは日々の量を把握することから始めてみませんか🐾\n記事はこちら👇\n#シニア猫 #猫の腎臓ケア",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-25-rougan-rouneko-eisei-cut-barikan-hook",
+    "date": "2026-10-25",
+    "article": "rougan-rouneko-eisei-cut-barikan",
+    "type": "hook",
+    "text": "足裏の毛が伸びて前より滑りやすくなった、お尻まわりの毛に汚れが付きやすくなった…そんな悩みには衛生カットという選択肢があります🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-26-rougan-rouneko-massage-kekkou-care-cta",
+    "date": "2026-10-26",
+    "article": "rougan-rouneko-massage-kekkou-care",
+    "type": "cta",
+    "text": "老犬・老猫のセルフマッサージ・血行ケア用品、マッサージコーム・ハンディマッサージャー・温感ケアグッズの選び方をまとめました。\n記事はこちら👇\n#老犬 #老猫 #セルフケア",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-26-rougan-rouneko-massage-kekkou-care-hook",
+    "date": "2026-10-26",
+    "article": "rougan-rouneko-massage-kekkou-care",
+    "type": "hook",
+    "text": "散歩のあと、なんとなく体をこわばらせている気がする——スキンシップの延長でできるセルフマッサージ、取り入れてみませんか🐾\n記事はこちら👇\n#老犬 #老猫 #セルフマッサージ",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-26-rougan-rouneko-food-mixer-surikobachi-hook",
+    "date": "2026-10-26",
+    "article": "rougan-rouneko-food-mixer-surikobachi",
+    "type": "hook",
+    "text": "ドライフードをうまく噛めていない様子が増えた気がする…そんな場合、フードを細かくする調理器具という選択肢があります🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-27-rougan-rouneko-mazuru-kuchiwa-cover-hook",
+    "date": "2026-10-27",
+    "article": "rougan-rouneko-mazuru-kuchiwa-cover",
+    "type": "hook",
+    "text": "通院や爪切りのとき、以前より唸る・咬もうとする様子が増えた気がする…そんな場合の一時的な安全確保として、マズルカバー・口輪という選択肢があります🐾",
+    "posted": false,
+    "posted_at": null
+  },
+  {
     "id": "2026-10-28-tatouka-shinia-gohan-kanri-cta",
     "date": "2026-10-28",
     "article": "tatouka-shinia-gohan-kanri",
@@ -827,6 +863,15 @@
     "article": "tatouka-shinia-gohan-kanri",
     "type": "hook",
     "text": "療法食に切り替えたいのに他の子が横取りしてしまう…多頭飼いならではの食事管理の悩み、食事分離サークル・マイクロチップ給餌器の選び方をまとめました。\n記事はこちら👇\n#多頭飼い #シニア猫 #シニア犬",
+    "posted": false,
+    "posted_at": null
+  },
+  {
+    "id": "2026-10-29-rougan-rouneko-pet-dryer-erabikata-hook",
+    "date": "2026-10-29",
+    "article": "rougan-rouneko-pet-dryer-erabikata",
+    "type": "hook",
+    "text": "シャンプー後、乾き終わるまでの時間が前より長くなった気がする…そんな方へ、ペット用ドライヤーの選び方をまとめました🐾",
     "posted": false,
     "posted_at": null
   },
