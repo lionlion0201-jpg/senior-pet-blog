@@ -5,15 +5,15 @@
     "affiliate_clicks": 0,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   },
   {
     "article": "/",
     "source": "(direct)",
     "affiliate_clicks": 0,
-    "sessions": 83,
+    "sessions": 86,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   },
   {
     "article": "/",
@@ -21,7 +21,15 @@
     "affiliate_clicks": 0,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
+  },
+  {
+    "article": "/",
+    "source": "scriblihelp.com",
+    "affiliate_clicks": 0,
+    "sessions": 1,
+    "period_start": "2026-09-21",
+    "period_end": "2026-10-11"
   },
   {
     "article": "/",
@@ -29,7 +37,7 @@
     "affiliate_clicks": 0,
     "sessions": 2,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   },
   {
     "article": "/posts/rougan-rouneko-ochitsukanai-anshin-care/",
@@ -37,7 +45,7 @@
     "affiliate_clicks": 1,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   },
   {
     "article": "/posts/rougan-rouneko-shoushuu-kuuki-seijou/",
@@ -45,7 +53,7 @@
     "affiliate_clicks": 1,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   },
   {
     "article": "/posts/rougan-rouneko-touyaku-hojo-guzzu/",
@@ -53,7 +61,7 @@
     "affiliate_clicks": 0,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   },
   {
     "article": "/posts/senior-pet-nedoko-bed-erabikata/",
@@ -61,7 +69,7 @@
     "affiliate_clicks": 0,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   },
   {
     "article": "/posts/senior-pet-tsumekiri-ashiura-care/",
@@ -69,6 +77,6 @@
     "affiliate_clicks": 0,
     "sessions": 1,
     "period_start": "2026-09-21",
-    "period_end": "2026-10-10"
+    "period_end": "2026-10-11"
   }
 ]
