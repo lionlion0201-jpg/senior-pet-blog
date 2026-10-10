@@ -6,6 +6,7 @@ tags: post
 published: false
 permalink: false
 eleventyExcludeFromCollections: true
+holdUntil: "2027-05-01"
 ---
 
 夏場、以前より息が荒くなるのが早い、日中はぐったりして動かない——シニア期の犬猫と暮らしていると、若い頃との体力差を感じる場面が増えてきます。加齢とともに体温調節の機能は少しずつ変化すると言われており、暑さへの備えは早めに整えておきたいところです。
