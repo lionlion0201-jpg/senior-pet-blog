@@ -48,7 +48,7 @@ def latest_cycle_log():
     return os.path.join(d, logs[-1]) if logs else None
 
 
-def match_drafts_to_posts(drafts, drafts_posts):
+def match_drafts_to_posts(drafts, drafts_posts, all_posts=None):
     """サイクルログの「### 記事N: 見出し」と実ファイルを対応づける。
 
     見出しは内容の要約なのでスラッグとは一致しない。見出しの語がタイトルに
@@ -67,6 +67,12 @@ def match_drafts_to_posts(drafts, drafts_posts):
             if key and (key in title or any(w in title for w in key.split() if len(w) > 2)):
                 hit = p
                 break
+        # 見出しが承認済み(下書きでない)記事のタイトルに含まれるなら、その案は
+        # すでに使われたもの。生成順の割り当てで新しい下書きに付けない
+        if hit is None and all_posts and key and any(
+                key in q["front_matter"].get("title", "")
+                for q in all_posts.values() if not q["is_draft"]):
+            continue
         if hit is None and i < len(drafts_posts):
             for p in drafts_posts:
                 if p["slug"] not in used:
@@ -89,7 +95,7 @@ def build():
         return
 
     slots = next_free_slots(posts, len(drafts_posts))
-    sns = match_drafts_to_posts(parse_sns_drafts(latest_cycle_log()), drafts_posts)
+    sns = match_drafts_to_posts(parse_sns_drafts(latest_cycle_log()), drafts_posts, posts)
 
     items = []
     for i, p in enumerate(drafts_posts):
