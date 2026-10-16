@@ -63,11 +63,19 @@ jobs:
           GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
         run: python3 scripts/fetch_ga4.py --days 30
 
+      # 検索の表示回数・クリック・順位・検索語・インデックス状態(2026-10-16 SEO に集中する方針で追加)
+      - name: Fetch Search Console
+        id: fetch_gsc
+        continue-on-error: true
+        env:
+          GA4_SA_KEY: ${{ secrets.GA4_SA_KEY }}
+        run: python3 scripts/fetch_gsc.py --days 28
+
       - name: Commit engagement log
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          for f in docs/engagement_log.json docs/metrics/ga4_clicks.json docs/metrics/ga4_products.json; do
+          for f in docs/engagement_log.json docs/metrics/ga4_clicks.json docs/metrics/ga4_products.json docs/metrics/gsc_pages.json docs/metrics/gsc_queries.json docs/metrics/gsc_index.json; do
             if [ -f "$f" ]; then git add "$f"; fi
           done
           if ! git diff --cached --quiet; then
@@ -79,9 +87,10 @@ jobs:
           fi
 
       - name: Report fetch failures
-        if: steps.fetch_x.outcome == 'failure' || steps.fetch_ga4.outcome == 'failure'
+        if: steps.fetch_x.outcome == 'failure' || steps.fetch_ga4.outcome == 'failure' || steps.fetch_gsc.outcome == 'failure'
         run: |
-          echo "X: ${{ steps.fetch_x.outcome }} / GA4: ${{ steps.fetch_ga4.outcome }}"
+          echo "X: ${{ steps.fetch_x.outcome }} / GA4: ${{ steps.fetch_ga4.outcome }} / Search Console: ${{ steps.fetch_gsc.outcome }}"
+          echo "Search Console が failure なら、Google Cloud で Search Console API が有効か、サービスアカウントが各プロパティのユーザーに入っているかを確認。"
           echo "X が failure なら Fetch metrics のログを確認(402=クレジット残高不足)。"
           echo "GA4 が failure なら GA4_SA_KEY / GA4_PROPERTY_ID の登録と、サービスアカウントがプロパティの閲覧者になっているかを確認。"
           exit 1
