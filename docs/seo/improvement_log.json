@@ -1,0 +1,16 @@
+[
+  {
+    "id": "2026-10-16-1",
+    "slug": "rougan-rouneko-ninchisho-taisaku",
+    "query": "老犬 夜泣き",
+    "reason": "タイトル・説明文を夜泣き・徘徊の検索語に合わせ、落ち着かない記事から内部リンクを追加(週次手順化の前に手動で実施した試行)",
+    "applied_at": "2026-10-16",
+    "before": {
+      "position": 16.9,
+      "impressions": 14,
+      "clicks": 0,
+      "period_end": "2026-10-13"
+    },
+    "changes": "git の 10/16 のコミットを参照"
+  }
+]
