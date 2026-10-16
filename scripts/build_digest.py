@@ -37,6 +37,7 @@ LINK_ERA_START = "2026-09-22"
 # 計測設計.md「読み方のルール」1 の目安
 MIN_POSTS_PER_TYPE = 20
 MIN_SESSIONS_PER_ARTICLE = 100
+MIN_GSC_IMPRESSIONS = 100  # 検索の表示回数。これ未満の記事の順位比較は結論しない
 NA = "未取得"
 WEEKDAYS = ["月", "火", "水", "木", "金", "土", "日"]
 
@@ -216,6 +217,72 @@ def group_table(posts, keyfn, label, ga4=None, articles=None):
     return lines
 
 
+def slug_of(url):
+    m = re.search(r"/posts/([^/]+)/?", url or "")
+    return m.group(1) if m else None
+
+
+def gsc_section(arts):
+    """Search Console の記事別の成績(2026-10-16 検索に集中する方針で追加)。
+
+    元データは fetch_gsc.py が毎晩保存する gsc_pages / gsc_queries / gsc_index。
+    """
+    pages = load_json(os.path.join(METRICS, "gsc_pages.json"), None)
+    index = load_json(os.path.join(METRICS, "gsc_index.json"), None)
+    queries = load_json(os.path.join(METRICS, "gsc_queries.json"), [])
+    L = ["## 検索(Search Console)", ""]
+    if not pages and not index:
+        return L + ["未取得(`fetch_gsc.py` の実行待ち)。", ""]
+
+    per = {}
+    for p in pages or []:
+        s = slug_of(p["page"])
+        if s:
+            per[s] = p
+    top_query = {}
+    for q in sorted(queries, key=lambda q: -q["impressions"]):
+        s = slug_of(q["page"])
+        if s and s not in top_query:
+            top_query[s] = q
+    indexed = {slug_of(i["url"]): i["verdict"] == "PASS" for i in index or [] if slug_of(i["url"])}
+
+    if pages:
+        tot_imp = sum(p["impressions"] for p in pages)
+        tot_clk = sum(p["clicks"] for p in pages)
+        L.append(f"期間: {pages[0]['period_start']}〜{pages[0]['period_end']}(Search Console は2〜3日遅れて確定する)/ "
+                 f"表示 {tot_imp:,}回 / クリック {tot_clk:,}回")
+    if index:
+        L.append(f"検索結果に載っている記事: {sum(indexed.values())} / {len(indexed)}"
+                 f"(サイトマップの記事URLを URL 検査 API で確認)")
+    L.append("")
+    L.append(f"表示が少ない記事の順位は日々大きく動く。表示{MIN_GSC_IMPRESSIONS}回未満の記事どうしの比較は「データ不足」とする。")
+    L.append("")
+    L.append("| 記事 | 公開日 | 掲載 | 表示 | クリック | クリック率 | 平均順位 | 表示の多い検索語(順位) |")
+    L.append("|---|---|---|---:|---:|---:|---:|---|")
+    slugs = set(per) | set(indexed)
+    for s in sorted(slugs, key=lambda s: (-(per.get(s, {}).get("impressions") or 0), s)):
+        a = arts.get(s, {"title": s, "date": "?"})
+        # 期間中に一度も表示されなかった記事は gsc_pages に行が無い。未取得ではなく0として出す
+        p = per.get(s) or ({"impressions": 0, "clicks": 0, "position": None} if pages is not None else None)
+        tq = top_query.get(s)
+        mark = {True: "○", False: "×"}.get(indexed.get(s), "-")
+        L.append(f"| {a['title'][:40]} | {a['date']} | {mark} | {fmt(p and p['impressions'])} | {fmt(p and p['clicks'])} | "
+                 f"{rate(p and p['clicks'], p and p['impressions'])} | {fmt(p and p['position']) if p and p['position'] is not None else '-'} | "
+                 f"{(tq['query'][:30] + '(' + str(tq['position']) + ')') if tq else '-'} |")
+    L.append("")
+    near = [s for s, p in per.items() if 8 <= p["position"] <= 30 and p["impressions"] >= 10]
+    if near:
+        L.append("**伸ばす候補**(平均8〜30位・表示10回以上。1ページ目の下〜2ページ目にいて、タイトル・説明文・内部リンク・内容の補強で上位を狙える): "
+                 + "、".join(f"`{s}`({per[s]['position']}位)" for s in sorted(near, key=lambda s: per[s]["position"])))
+        L.append("")
+    missing = sorted(s for s, ok in indexed.items() if not ok)
+    if missing:
+        L.append("**検索結果に未掲載**: " + "、".join(f"`{s}`" for s in missing)
+                 + "(Search Console の URL 検査からインデックス登録をリクエストできる)")
+        L.append("")
+    return L
+
+
 def build(today):
     global _TODAY
     _TODAY = today
@@ -240,7 +307,9 @@ def build(today):
     for name, n, uniq, last in status:
         L.append(f"| {name} | {n} | {uniq} | {last} |")
     L.append(f"| GA4 `affiliate_click` | {'あり' if ga4 else NA} | - | {'-' if ga4 else 'Data API未連携(管理画面でのみ閲覧可)'} |")
-    L.append("| Search Console | 未連携 | - | - |")
+    gsc_pages = load_json(os.path.join(METRICS, "gsc_pages.json"), None)
+    L.append(f"| Search Console | {len(gsc_pages) if gsc_pages else NA} | - | "
+             f"{(gsc_pages[0]['period_end'] + ' まで') if gsc_pages else '未取得'} |")
     L.append("")
     warnings = []
     if not measured:
@@ -289,6 +358,9 @@ def build(today):
                  "(インプレッション単体で型を評価しない)。")
         L.append("")
 
+    # --- 検索(Search Console)
+    L += gsc_section(arts)
+
     # --- 記事単位
     L.append("## 記事単位のファネル")
     L.append("")
@@ -331,7 +403,7 @@ def build(today):
     L.append("### 流入元別")
     L.append("")
     L += group_table(posts, lambda p: p["platform"], "流入元")
-    L.append("| 検索 | - | - | 未連携 | - | 未取得 | 未取得 |")
+    L.append("| 検索 | - | - | 上の「検索(Search Console)」を参照 | - | - | - |")
     L.append("")
     L.append("サイトへの流入(セッション)とリンククリックは流入元を問わずGA4由来のため、現時点では比較できない。")
     L.append("")
