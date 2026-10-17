@@ -16,6 +16,15 @@ permalink: /
   </div>
 </div>
 
+<nav class="category-nav" aria-label="テーマから探す">
+  <h2>テーマから探す</h2>
+  <ul>
+  {% for cat in collections.categoryHubs %}
+    <li><a href="{{ ('/category/' + cat.slug + '/') | url }}">{{ cat.name }}<span class="count">{{ cat.posts.length }}</span></a></li>
+  {% endfor %}
+  </ul>
+</nav>
+
 <ul class="post-list">
 {% for post in collections.posts %}
   <li class="post-card">

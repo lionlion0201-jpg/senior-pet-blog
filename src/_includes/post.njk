@@ -19,10 +19,19 @@ layout: base.njk
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": {{ site.name | dump | safe }}, "item": "{{ site.domain }}{{ '/' | url }}" },
+{%- if categorySlug %}
+    { "@type": "ListItem", "position": 2, "name": {{ categoryName | dump | safe }}, "item": "{{ site.domain }}{{ ('/category/' + categorySlug + '/') | url }}" },
+    { "@type": "ListItem", "position": 3, "name": {{ title | dump | safe }}, "item": "{{ site.domain }}{{ page.url | url }}" }
+{%- else %}
     { "@type": "ListItem", "position": 2, "name": {{ title | dump | safe }}, "item": "{{ site.domain }}{{ page.url | url }}" }
+{%- endif %}
   ]
 }
 </script>
+<nav class="breadcrumb" aria-label="パンくずリスト">
+  <a href="{{ '/' | url }}">ホーム</a>
+  {% if categorySlug %}<span aria-hidden="true">›</span> <a href="{{ ('/category/' + categorySlug + '/') | url }}">{{ categoryName }}</a>{% endif %}
+</nav>
 <article>
   <p class="post-meta">公開日: {{ date | readableDate }}</p>
   <h1>{{ title }}</h1>
@@ -32,10 +41,9 @@ layout: base.njk
 <aside class="related-posts">
   <h2>関連記事</h2>
   <ul>
-    {% for post in collections.posts %}
-      {% if post.url != page.url %}
-        <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
-      {% endif %}
+    {% for post in collections.posts | relatedPosts(page.url, categorySlug) %}
+      <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
     {% endfor %}
   </ul>
+  {% if categorySlug %}<p class="category-more"><a href="{{ ('/category/' + categorySlug + '/') | url }}">「{{ categoryName }}」の記事をすべて見る</a></p>{% endif %}
 </aside>

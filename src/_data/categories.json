@@ -1,0 +1,120 @@
+{
+  "_note": "テーマの定義(categories)と、記事スラッグ→テーマslug の対応(posts)。新しい記事を作ったら posts に1行足す。決め方は lib/categories.js を参照。",
+  "categories": [
+    {
+      "slug": "mobility",
+      "name": "足腰・歩行と寝床",
+      "intro": "段差でためらう、立ち上がりに時間がかかる、寝ている時間が増えた——足腰の変化が気になってきたシニア期の犬猫に向けて、スロープや歩行補助ハーネス、車椅子、寝床、関節ケアなどの選び方をまとめています。歩き方や痛がる様子に変化があるときは、グッズ選びの前に動物病院へご相談ください。"
+    },
+    {
+      "slug": "home-environment",
+      "name": "住まい・季節の環境",
+      "intro": "視力や聴力の変化、寒さや湿気、留守番中の室温など、シニア期の犬猫が過ごす部屋まわりの整え方をまとめています。ケージ・サークルの見直しや冬支度、除湿・加湿、誤飲やいたずらの防止などを比較しています。体調の変化が気になるときは、環境づくりとあわせて動物病院へご相談ください。"
+    },
+    {
+      "slug": "body-care",
+      "name": "体のケア・お手入れ",
+      "intro": "歯みがき、爪切り、耳掃除、ブラッシング、お風呂など、シニア期の犬猫の日々のお手入れに使う用品の選び方をまとめています。皮膚の赤みや強いかゆみ、目や口のにおいの急な変化など気になる症状があるときは、自宅でのケアを始める前に動物病院へご相談ください。"
+    },
+    {
+      "slug": "food-water",
+      "name": "食事・水分",
+      "intro": "食が細くなった、食べる姿勢がつらそう、飲水量が気になる——シニア期の犬猫の食事と水分にまつわる悩みに向けて、食器台やフードの保存、体重管理、食欲が落ちたときの工夫などを比較しています。療法食やフードの切り替え、食欲や飲水量の急な変化については、動物病院へご相談ください。"
+    },
+    {
+      "slug": "toilet-hygiene",
+      "name": "トイレ・粗相・お部屋の衛生",
+      "intro": "トイレの失敗が増えてきた、部屋のニオイや抜け毛が気になる——シニア期の犬猫との暮らしで増えやすい、トイレまわりと衛生の悩みに向けた用品の選び方をまとめています。防水シーツやおむつ、介護服、トイレ環境の見直し、消臭・お掃除グッズを比較しています。排泄の回数や様子が急に変わったときは、動物病院へご相談ください。"
+    },
+    {
+      "slug": "mind-behavior",
+      "name": "心と行動・見守り",
+      "intro": "夜泣きや徘徊、そわそわして落ち着かない様子、留守番中や脱走の心配など、シニア期の犬猫の行動の変化にまつわる記事をまとめています。認知症が気になるときのグッズや、見守りカメラ・GPSトラッカーの選び方を比較しています。行動の変化には病気が隠れていることもあるため、まずは動物病院へご相談ください。"
+    },
+    {
+      "slug": "outing-safety",
+      "name": "お出かけ・通院・防災",
+      "intro": "通院の回数が増えるシニア期に向けて、キャリーバッグやペットカート、車での移動、雨の日や夕方のお散歩、災害への備えに使う用品の選び方をまとめています。移動中の体調や持病・お薬の扱いについては、かかりつけの動物病院に前もって相談しておくと安心です。"
+    },
+    {
+      "slug": "health-planning",
+      "name": "体調管理・保険・買い方",
+      "intro": "日々の体調記録やお薬の飲ませ方、健康診断の準備、シニア期からのペット保険、セール時の買い物の考え方など、シニア期の暮らしを長い目で支えるための記事をまとめています。体調の変化や投薬については、自己判断せず動物病院へご相談ください。保険の補償内容は各社の最新の資料でご確認ください。"
+    }
+  ],
+  "posts": {
+    "rougan-dansa-taisaku": "mobility",
+    "rougan-rouneko-hokou-hojo-harness": "mobility",
+    "rougan-rouneko-kurumaisu-hokouki-erabikata": "mobility",
+    "rouneko-jampuryoku-teika-cat-tower": "mobility",
+    "rougan-rouneko-undoubusoku-shitsunai-asobi": "mobility",
+    "senior-pet-kansetsu-care": "mobility",
+    "senior-pet-nedoko-bed-erabikata": "mobility",
+    "rougan-netakiri-tokozure-taisaku": "mobility",
+    "shinia-neko-danboru-youhin-erabikata": "home-environment",
+    "rougan-rouneko-cage-circle-minaoshi": "home-environment",
+    "rougan-rouneko-choryoku-shiryoku-taisaku": "home-environment",
+    "fuyujitaku-boukan-taisaku": "home-environment",
+    "rougan-rouneko-joshitsu-shikke-taisaku": "home-environment",
+    "rougan-rouneko-kashitsu-kansou-care": "home-environment",
+    "rougan-rouneko-rusuban-shitsuon-kanri": "home-environment",
+    "rougan-rouneko-goin-itazura-boushi": "home-environment",
+    "rougan-rouneko-dassou-boushi-guzzu": "home-environment",
+    "rougan-yonaki-boon-taisaku": "home-environment",
+    "senior-pet-dental-care": "body-care",
+    "senior-pet-tsumekiri-ashiura-care": "body-care",
+    "rougan-rouneko-mimi-care": "body-care",
+    "rougan-rouneko-nukege-hifu-care": "body-care",
+    "rougan-rouneko-nomi-dani-taisaku": "body-care",
+    "rougan-rouneko-namekowashi-kakimushiri-taisaku": "body-care",
+    "rougan-rouneko-massage-kekkou-care": "body-care",
+    "rougan-rouneko-nyuuyoku-shampoo-kaijo": "body-care",
+    "rougan-rouneko-hana-hiji-kasakasa-care": "body-care",
+    "rougan-rouneko-namidayake-mekuso-care": "body-care",
+    "rougan-me-shiroi-mienikui-care": "body-care",
+    "rougan-rouneko-eisei-cut-barikan": "body-care",
+    "rougan-rouneko-pet-dryer-erabikata": "body-care",
+    "rougan-rouneko-food-hozon-kowake-guzzu": "food-water",
+    "rougan-rouneko-shokki-takasa-chousei": "food-water",
+    "rougan-rouneko-tabekoboshi-mizukoboshi-taisaku": "food-water",
+    "senior-pet-shokuyoku-fushin-taisaku": "food-water",
+    "senior-pet-taijuu-kanri-himan-taisaku": "food-water",
+    "shinia-neko-insui-jinzou-care": "food-water",
+    "rougan-rouneko-benpi-onaka-care": "food-water",
+    "rougan-rouneko-food-mixer-surikobachi": "food-water",
+    "rougan-rouneko-shokuji-kaijo-guzzu": "food-water",
+    "rougan-rouneko-jidou-kyuusuiki-erabikata": "food-water",
+    "shinia-ken-dry-food-minaoshi": "food-water",
+    "tatouka-shinia-gohan-kanri": "food-water",
+    "shinia-neko-kedama-care": "food-water",
+    "rougan-rouneko-sosou-taisaku": "toilet-hygiene",
+    "rougan-rouneko-kaigofuku-erabikata": "toilet-hygiene",
+    "shinia-neko-toire-minaoshi": "toilet-hygiene",
+    "rougan-rouneko-shoushuu-kuuki-seijou": "toilet-hygiene",
+    "rougan-rouneko-kanmouki-souji-guzzu": "toilet-hygiene",
+    "rougan-omutsu-kabure-care": "toilet-hygiene",
+    "rougan-rouneko-omutsu-shori-shoushuu-bukuro": "toilet-hygiene",
+    "rougan-toire-maniawanai-taisaku": "toilet-hygiene",
+    "shinia-neko-jidou-toire-erabikata": "toilet-hygiene",
+    "rougan-rouneko-ninchisho-taisaku": "mind-behavior",
+    "rougan-rouneko-ochitsukanai-anshin-care": "mind-behavior",
+    "miimori-camera-jidou-kyuuji": "mind-behavior",
+    "rougan-rouneko-dassou-maigo-taisaku": "mind-behavior",
+    "rougan-haikai-enkei-circle": "mind-behavior",
+    "shinia-neko-yonaki-taisaku": "mind-behavior",
+    "senior-pet-tsuuin-carry-erabikata": "outing-safety",
+    "rougan-rouneko-drive-anzen-guzzu": "outing-safety",
+    "rougan-rouneko-amagu-sanpo-taisaku": "outing-safety",
+    "rougan-rouneko-bousai-guzzu": "outing-safety",
+    "rougan-rouneko-dakko-himo-sling-carry": "outing-safety",
+    "rougan-rouneko-yakan-sanpo-anzen-guzzu": "outing-safety",
+    "rougan-kubiwa-harness-kirikae": "outing-safety",
+    "rougan-rouneko-mazuru-kuchiwa-cover": "outing-safety",
+    "rougan-rouneko-taichou-kanri-guzzu": "health-planning",
+    "rougan-rouneko-touyaku-hojo-guzzu": "health-planning",
+    "senior-pet-hoken-erabikata": "health-planning",
+    "senior-pet-sale-kaimono-handan": "health-planning",
+    "rougan-rouneko-sainyou-kenshin-junbi": "health-planning",
+    "rougan-rouneko-omoide-katachi-nokosu": "health-planning"
+  }
+}

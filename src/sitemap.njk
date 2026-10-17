@@ -8,5 +8,6 @@ eleventyExcludeFromCollections: true
 <url><loc>{{ site.domain }}{{ '/about/' | url }}</loc></url>
 <url><loc>{{ site.domain }}{{ '/affiliate-disclosure/' | url }}</loc></url>
 <url><loc>{{ site.domain }}{{ '/privacy-policy/' | url }}</loc></url>
-{% for post in collections.posts %}<url><loc>{{ site.domain }}{{ post.url | url }}</loc></url>
+{% for cat in collections.categoryHubs %}<url><loc>{{ site.domain }}{{ ('/category/' + cat.slug + '/') | url }}</loc></url>
+{% endfor %}{% for post in collections.posts %}<url><loc>{{ site.domain }}{{ post.url | url }}</loc></url>
 {% endfor %}</urlset>
