@@ -11,3 +11,7 @@ description: このサイトについて
 
 記事の執筆・構成の一部にAIツールを活用しています。公開前の内容確認は運営者が行っています。
 
+## お問い合わせ
+
+記事の内容や当サイトについてのお問い合わせは、[お問い合わせフォーム](https://docs.google.com/forms/d/e/1FAIpQLSek6DvWOSaviJjujstVGhy0RDV_usu9n6vWt4M9yVTwYEqeYQ/viewform)からお送りください。返信までお時間をいただく場合があります。
+
