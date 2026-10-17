@@ -1,10 +1,38 @@
 const { DateTime } = require("luxon");
+const fs = require("fs");
+const path = require("path");
+const crypto = require("crypto");
 const { isPublished, isSlugPublished } = require("./lib/publishing");
 const { addRakutenButtons } = require("./lib/rakuten");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addGlobalData("currentYear", () => new Date().getFullYear());
+
+  // 記事ごとの OG 画像(scripts/generate_og_images.py が og-images/<slug>.png に生成)。
+  // ・公開済みの記事の画像だけを /assets/og/ にコピーする。予約公開待ちの記事の
+  //   画像(タイトル入り)が記事より先に公開されないようにするため。
+  // ・画像が無い記事(生成に失敗した場合など)は ogImage が空を返し、テンプレートは
+  //   og:image も画像タグも出さない。画像が無くてもビルドは止まらない。
+  // ・URL の ?v= は画像の中身のハッシュ。タイトルを直したとき SNS 側の古い画像の
+  //   キャッシュを避けるため。
+  const ogImages = {};
+  const ogDir = path.join(__dirname, "og-images");
+  if (fs.existsSync(ogDir)) {
+    for (const file of fs.readdirSync(ogDir)) {
+      if (!file.endsWith(".png")) continue;
+      const slug = file.slice(0, -4);
+      if (!isSlugPublished(slug)) continue;
+      const hash = crypto
+        .createHash("md5")
+        .update(fs.readFileSync(path.join(ogDir, file)))
+        .digest("hex")
+        .slice(0, 8);
+      ogImages[slug] = `/assets/og/${file}?v=${hash}`;
+      eleventyConfig.addPassthroughCopy({ [`og-images/${file}`]: `assets/og/${file}` });
+    }
+  }
+  eleventyConfig.addFilter("ogImage", (slug) => ogImages[slug] || "");
 
   eleventyConfig.addCollection("posts", function (collectionApi) {
     const now = new Date();

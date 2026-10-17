@@ -57,3 +57,6 @@ th{background:var(--accent-soft)}
 .related-posts ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem}
 .related-posts a{color:var(--accent);text-decoration:none}
 .related-posts a:hover{text-decoration:underline}
+
+/* 記事の見出し画像(scripts/generate_og_images.py で自動生成)。width/height 属性で縦横比を確保し、スマホ幅では縮小する */
+.post-eyecatch{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:1200/630;margin:.4rem 0 1.4rem;border-radius:12px;border:1px solid var(--border)}

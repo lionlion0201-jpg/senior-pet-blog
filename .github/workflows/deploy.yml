@@ -27,6 +27,19 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+      # 記事ごとの OG 画像(タイトル+サイト名)を og-images/ に生成する。
+      # 画像は SNS・画像検索向けのおまけなので、ここが失敗しても止めずに
+      # 画像なしでビルド・配信を続ける(テンプレートは画像が無ければタグを出さない)。
+      # フォントはリポジトリの scripts/fonts/ に同梱しているため、ここでは入れない。
+      - uses: actions/setup-python@v5
+        continue-on-error: true
+        with:
+          python-version: "3.12"
+      - name: Generate OG images
+        continue-on-error: true
+        run: |
+          python -m pip install -r scripts/requirements-og.txt
+          python scripts/generate_og_images.py
       - run: npx @11ty/eleventy
       - uses: actions/upload-pages-artifact@v3
         with:

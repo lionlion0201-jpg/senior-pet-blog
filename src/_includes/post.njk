@@ -1,11 +1,13 @@
 ---
 layout: base.njk
 ---
+{% set ogImg = page.fileSlug | ogImage %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": {{ title | dump | safe }},
+  {% if ogImg %}"image": ["{{ site.domain }}{{ ogImg }}"],{% endif %}
   "description": {{ (description or site.description) | dump | safe }},
   "datePublished": "{{ date | isoDate }}",
   "author": { "@type": "Organization", "name": {{ site.author | dump | safe }} },
@@ -26,6 +28,7 @@ layout: base.njk
 <article>
   <p class="post-meta">公開日: {{ date | readableDate }}</p>
   <h1>{{ title }}</h1>
+  {% if ogImg %}<img class="post-eyecatch" src="{{ ogImg }}" alt="{{ title }}" width="1200" height="630" loading="eager" decoding="async">{% endif %}
   <div class="affiliate-note">この記事にはPR(アフィリエイト広告)を含みます。商品購入や資料請求により、当サイトが紹介料を受け取ることがあります。詳しくは<a href="{{ '/affiliate-disclosure/' | url }}">広告表記</a>をご覧ください。</div>
   {{ content | safe }}
 </article>

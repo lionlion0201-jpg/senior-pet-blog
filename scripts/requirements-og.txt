@@ -1,0 +1,3 @@
+# 記事ごとの OG 画像の生成(scripts/generate_og_images.py)に必要なものだけ。
+# deploy.yml のビルド前ステップで入れる。他のスクリプト用は requirements.txt。
+Pillow>=10.0
