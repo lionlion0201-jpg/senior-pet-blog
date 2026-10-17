@@ -14,7 +14,7 @@
     {
       "slug": "body-care",
       "name": "体のケア・お手入れ",
-      "intro": "歯みがき、爪切り、耳掃除、ブラッシング、お風呂など、シニア期の犬猫の日々のお手入れに使う用品の選び方をまとめています。皮膚の赤みや強いかゆみ、目や口のにおいの急な変化など気になる症状があるときは、自宅でのケアを始める前に動物病院へご相談ください。"
+      "intro": "歯みがき、爪切り、耳掃除、ブラッシング、お風呂などの日々のお手入れに加えて、体温や体調の記録、お薬の飲ませ方、健康診断の準備に使う用品の選び方をまとめています。皮膚の赤みや強いかゆみ、目や口のにおいの急な変化など気になる症状があるときや、体調・投薬について迷うときは、自己判断せず動物病院へご相談ください。"
     },
     {
       "slug": "food-water",
@@ -37,9 +37,9 @@
       "intro": "通院の回数が増えるシニア期に向けて、キャリーバッグやペットカート、車での移動、雨の日や夕方のお散歩、災害への備えに使う用品の選び方をまとめています。移動中の体調や持病・お薬の扱いについては、かかりつけの動物病院に前もって相談しておくと安心です。"
     },
     {
-      "slug": "health-planning",
-      "name": "体調管理・保険・買い方",
-      "intro": "日々の体調記録やお薬の飲ませ方、健康診断の準備、シニア期からのペット保険、セール時の買い物の考え方など、シニア期の暮らしを長い目で支えるための記事をまとめています。体調の変化や投薬については、自己判断せず動物病院へご相談ください。保険の補償内容は各社の最新の資料でご確認ください。"
+      "slug": "others",
+      "name": "その他(保険・セール品など)",
+      "intro": "シニア期からのペット保険の考え方、セールのときの買い物の判断、愛犬・愛猫との思い出の残し方など、ほかのテーマに当てはまらない記事をまとめています。保険の補償内容や加入条件は、各社の最新の資料でご確認ください。"
     }
   ],
   "posts": {
@@ -110,11 +110,11 @@
     "rougan-rouneko-yakan-sanpo-anzen-guzzu": "outing-safety",
     "rougan-kubiwa-harness-kirikae": "outing-safety",
     "rougan-rouneko-mazuru-kuchiwa-cover": "outing-safety",
-    "rougan-rouneko-taichou-kanri-guzzu": "health-planning",
-    "rougan-rouneko-touyaku-hojo-guzzu": "health-planning",
-    "senior-pet-hoken-erabikata": "health-planning",
-    "senior-pet-sale-kaimono-handan": "health-planning",
-    "rougan-rouneko-sainyou-kenshin-junbi": "health-planning",
-    "rougan-rouneko-omoide-katachi-nokosu": "health-planning"
+    "rougan-rouneko-taichou-kanri-guzzu": "body-care",
+    "rougan-rouneko-touyaku-hojo-guzzu": "body-care",
+    "senior-pet-hoken-erabikata": "others",
+    "senior-pet-sale-kaimono-handan": "others",
+    "rougan-rouneko-sainyou-kenshin-junbi": "body-care",
+    "rougan-rouneko-omoide-katachi-nokosu": "others"
   }
 }
