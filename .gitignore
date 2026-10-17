@@ -15,3 +15,6 @@ docs/review/decisions.json
 # 未投稿ツイートのレビュー画面(その回限り)
 docs/review/stale_tweets.html
 docs/review/tweet_decisions.json
+
+# 記事ごとの OG 画像。deploy.yml のビルド前に GitHub Actions 上で毎回生成するのでコミットしない。
+og-images/

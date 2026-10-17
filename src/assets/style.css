@@ -72,3 +72,5 @@ th{background:var(--accent-soft)}
 .category-intro{color:var(--muted);margin:0 0 1.4rem}
 .category-more{margin:.9rem 0 0;font-size:.88rem}
 .category-more a{color:var(--accent)}
+/* 記事の見出し画像(scripts/generate_og_images.py で自動生成)。width/height 属性で縦横比を確保し、スマホ幅では縮小する */
+.post-eyecatch{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:1200/630;margin:.4rem 0 1.4rem;border-radius:12px;border:1px solid var(--border)}
