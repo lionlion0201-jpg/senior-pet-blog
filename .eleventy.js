@@ -1,5 +1,6 @@
 const { DateTime } = require("luxon");
 const { isPublished, isSlugPublished } = require("./lib/publishing");
+const { addRakutenButtons } = require("./lib/rakuten");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
@@ -22,6 +23,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPairedShortcode("whenPublished", (content, slug) =>
     isSlugPublished(slug) ? content : ""
   );
+
+  // Amazon の検索ボタンの隣に楽天市場ボタンを足す(lib/rakuten.js)
+  eleventyConfig.addTransform("rakuten-buttons", function (content, outputPath) {
+    return addRakutenButtons(content, (this.page && this.page.outputPath) || outputPath);
+  });
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).setLocale("ja").toFormat("yyyy年LL月dd日");

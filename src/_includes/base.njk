@@ -50,7 +50,15 @@ gtag('config', '{{ site.gaId }}');
     var target = '';
     try {
       var u = new URL(a.href);
-      target = u.searchParams.get('k') || (u.hostname.replace(/^www\./, '') + u.pathname);
+      // もしもアフィリエイトのリンクは、本当の行き先が url パラメータに入っている。
+      // 楽天市場ボタン(lib/rakuten.js)の場合は、行き先のホストと検索語を取り出す。
+      if (u.hostname === 'af.moshimo.com' && u.searchParams.get('url')) {
+        u = new URL(u.searchParams.get('url'));
+        host = u.hostname.replace(/^www\./, '');
+        var m = u.pathname.match(/\/search\/mall\/([^\/]+)/);
+        if (m) target = decodeURIComponent(m[1]).replace(/\+/g, ' ');
+      }
+      target = target || u.searchParams.get('k') || (u.hostname.replace(/^www\./, '') + u.pathname);
     } catch (err) { target = a.href; }
 
     var params = {
