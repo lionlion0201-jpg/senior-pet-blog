@@ -29,7 +29,7 @@ python3 scripts/apply_review.py             # 反映
 git add -A src/posts docs && git commit && git push
 ```
 
-**2026-10-17から**: 上の取り込み〜push は `python3 scripts/apply_decisions.py` の1コマンドで行う。ファイルを指定しなければ、ダウンロードフォルダの decisions*.json から JP の書き出しで最も新しいもの(中の書き出し日時で判断)を選び、反映済み(`docs/review/applied.json` に記録)なら止まる
+**2026-10-17から**: 上の取り込み〜push は `python3 scripts/apply_decisions.py` の1コマンドで行う。ファイルを指定しなければ、ダウンロードフォルダの decisions*.json から JP の書き出しで最も新しいもの(中の書き出し日時で判断)を選び、反映済み(`docs/review/applied.json` に記録)なら止まる。反映後のファイルは `~/Downloads/レビュー決定/JP/decisions_JP_YYMMDD.json` に移す(同じ日が2つあれば `_2`)。US のファイルは US 側の反映前かもしれないので動かさない
 (サイト名の確認 → pull → コピー → dry-run → 反映 → commit → push。途中で失敗したら push しない)。
 Claude Code の利用者設定(`~/.claude/settings.json`)で、このコマンドと `~/Downloads/decisions*.json` の読み込みは確認なしで実行できるよう許可してある。
 
