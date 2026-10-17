@@ -7,7 +7,8 @@ layout: base.njk
   "@type": "Article",
   "headline": {{ title | dump | safe }},
   "description": {{ (description or site.description) | dump | safe }},
-  "datePublished": "{{ date | isoDate }}",
+  "datePublished": "{{ publishedDateStr }}",
+  "dateModified": "{{ modifiedDateStr }}",
   "author": { "@type": "Organization", "name": {{ site.author | dump | safe }} },
   "publisher": { "@type": "Organization", "name": {{ site.name | dump | safe }} },
   "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.domain }}{{ page.url | url }}" }
@@ -24,7 +25,7 @@ layout: base.njk
 }
 </script>
 <article>
-  <p class="post-meta">公開日: {{ date | readableDate }}</p>
+  <p class="post-meta">公開日 <time datetime="{{ publishedDateStr }}">{{ publishedDateStr | jpDateStr }}</time>{% if updatedShownStr %} / 更新日 <time datetime="{{ updatedShownStr }}">{{ updatedShownStr | jpDateStr }}</time>{% endif %}</p>
   <h1>{{ title }}</h1>
   <div class="affiliate-note">この記事にはPR(アフィリエイト広告)を含みます。商品購入や資料請求により、当サイトが紹介料を受け取ることがあります。詳しくは<a href="{{ '/affiliate-disclosure/' | url }}">広告表記</a>をご覧ください。</div>
   {{ content | safe }}
