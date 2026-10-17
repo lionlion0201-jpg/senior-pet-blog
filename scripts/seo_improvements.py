@@ -15,12 +15,13 @@
 
 使い方:
   python3 scripts/seo_improvements.py list                 未反映の改善案を一覧する(変更前→変更後)
-  python3 scripts/seo_improvements.py apply ID [ID ...]     承認された案を記事に反映し、記録に残す
+  python3 scripts/seo_improvements.py apply ID [ID ...]     承認された案を記事に反映し、記録に残す(記事のフロントマターに updated: 今日 も記録)
   python3 scripts/seo_improvements.py review                反映から28日以上たった改善の、反映時と現在の比較
 """
 import glob
 import json
 import os
+import re
 import sys
 from datetime import date, datetime, timedelta, timezone
 
@@ -62,6 +63,20 @@ def all_proposals():
     return out
 
 
+def set_updated(text, today):
+    """フロントマターの `updated:` 行を today にする(無ければ閉じの --- の直前に足す)。
+    記事ページの「更新日」表示と JSON-LD の dateModified に使われる。"""
+    m = re.match(r"---\n(.*?)\n---(\n|$)", text, re.S)
+    if not m:
+        return None
+    fm = m.group(1)
+    if re.search(r"^updated:.*$", fm, re.M):
+        fm = re.sub(r"^updated:.*$", f"updated: {today}", fm, count=1, flags=re.M)
+    else:
+        fm = fm + f"\nupdated: {today}"
+    return "---\n" + fm + "\n---" + m.group(2) + text[m.end():]
+
+
 def applied_ids():
     return {e["id"] for e in load(LOG, [])}
 
@@ -96,7 +111,12 @@ def cmd_apply(ids):
             sys.exit(f"{i}: 改善案が見つかりません")
         # 先にすべての置換が成り立つか確かめてから書き込む(途中まで反映された状態を作らない)
         texts = {}
+        today = datetime.now(JST).date().isoformat()
         for c in p["changes"]:
+            # updated 行は反映処理が自分で書く。改善案がこの行を触っていると衝突するので止める
+            if re.search(r"^updated:", c["old"] + "\n" + c["new"], re.M):
+                sys.exit(f"{i}: {c['file']} の変更が updated: 行を含んでいます。"
+                         "updated は反映時に自動で記録されるので、提案から外してください。")
             path = os.path.join(ROOT, c["file"])
             t = texts.get(path) or open(path, encoding="utf-8").read()
             n = t.count(c["old"])
@@ -104,11 +124,17 @@ def cmd_apply(ids):
                 sys.exit(f"{i}: {c['file']} で変更前の文字列が {n} 回見つかりました(1回である必要があります)。"
                          "記事が提案後に変わった可能性があるので、提案を作り直してください。")
             texts[path] = t.replace(c["old"], c["new"])
+        # 変更した記事すべてに更新日を記録する(これも書き込み前にまとめて確かめる)
+        for path in list(texts):
+            new_t = set_updated(texts[path], today)
+            if new_t is None:
+                sys.exit(f"{i}: {os.path.relpath(path, ROOT)} にフロントマターが見つかりません")
+            texts[path] = new_t
         for path, t in texts.items():
             with open(path, "w", encoding="utf-8") as f:
                 f.write(t)
         log.append({"id": i, "slug": p["slug"], "query": p.get("query"), "reason": p.get("reason"),
-                    "applied_at": datetime.now(JST).date().isoformat(), "before": gsc_for(p["slug"]),
+                    "applied_at": today, "before": gsc_for(p["slug"]),
                     "changes": p["changes"]})
         print(f"{i}: {p['slug']} に反映しました")
     save(LOG, log)

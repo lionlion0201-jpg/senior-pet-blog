@@ -61,6 +61,12 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).setLocale("ja").toFormat("yyyy年LL月dd日");
   });
 
+  // "YYYY-MM-DD" の文字列を「2026年9月22日」にする(記事ページの公開日・更新日用)
+  eleventyConfig.addFilter("jpDateStr", (s) => {
+    const m = String(s || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+    return m ? `${m[1]}年${Number(m[2])}月${Number(m[3])}日` : "";
+  });
+
   eleventyConfig.addFilter("isoDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
