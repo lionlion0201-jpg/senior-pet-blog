@@ -1,5 +1,11 @@
 {
-  "decided_at": "2026-10-17T05:25:54.658Z",
-  "file": "レビュー決定/JP/decisions_JP_261017.json",
-  "approved": ["rougan-haikai-enkei-circle", "rougan-netakiri-tokozure-taisaku", "rougan-omutsu-kabure-care", "rougan-yonaki-boon-taisaku", "shinia-neko-yonaki-taisaku"]
+  "decided_at": "2026-10-24T04:02:03.347Z",
+  "file": "レビュー決定/JP/decisions_JP_261024.json",
+  "approved": [
+    "rougan-chuuya-gyakuten-taisaku",
+    "rougan-kaigo-koshi-futan-keigen",
+    "rougan-rouneko-danbou-yakedo-taisaku",
+    "rouneko-kezukuroi-care",
+    "senior-pet-oyatsu-minaoshi"
+  ]
 }
