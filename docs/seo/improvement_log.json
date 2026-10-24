@@ -12,5 +12,105 @@
       "period_end": "2026-10-13"
     },
     "changes": "git の 10/16 のコミットを参照"
+  },
+  {
+    "id": "2026-10-24-1",
+    "slug": "rougan-rouneko-cage-circle-minaoshi",
+    "query": "老犬 徘徊 サークル",
+    "reason": "10/17 承認の新記事(徘徊・円形サークル、11/10 公開予定)への内部リンク。前回サイクルのプロモーター案。リンク元は表示0回のため順位の根拠ではなく、新記事を内部リンクで支える目的",
+    "applied_at": "2026-10-24",
+    "before": {
+      "position": null,
+      "impressions": 0,
+      "clicks": 0,
+      "period_end": null
+    },
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-cage-circle-minaoshi.md",
+        "old": "- 面積に対して圧迫感が少なく、方向転換しやすいか",
+        "new": "- 面積に対して圧迫感が少なく、方向転換しやすいか\n\n{% whenPublished \"rougan-haikai-enkei-circle\" %}\n徘徊が見られる子のサークル選びは、[老犬の徘徊・ぐるぐる回る行動が気になったら]({{ '/posts/rougan-haikai-enkei-circle/' | url }})もあわせてご覧ください。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-24-2",
+    "slug": "shinia-neko-insui-jinzou-care",
+    "query": "老猫 夜鳴き",
+    "reason": "10/17 承認の新記事(老猫の夜鳴き、11/14 公開予定)への内部リンク。前回サイクルのプロモーター案。リンク元は表示1回・98位で順位改善の根拠ではない",
+    "applied_at": "2026-10-24",
+    "before": {
+      "position": 98,
+      "impressions": 1,
+      "clicks": 0,
+      "period_end": "2026-10-21"
+    },
+    "changes": [
+      {
+        "file": "src/posts/shinia-neko-insui-jinzou-care.md",
+        "old": "- ぐったりしている、嘔吐を繰り返すなど他の症状を伴う",
+        "new": "- ぐったりしている、嘔吐を繰り返すなど他の症状を伴う\n\n{% whenPublished \"shinia-neko-yonaki-taisaku\" %}\n夜鳴きが一緒に増えている場合は、[老猫の夜鳴きが増えてきたら]({{ '/posts/shinia-neko-yonaki-taisaku/' | url }})も参考にしてください。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-24-3",
+    "slug": "senior-pet-nedoko-bed-erabikata",
+    "query": "老犬 寝たきり 床ずれ",
+    "reason": "10/17 承認の新記事(寝たきり・床ずれ、11/11 公開予定)への内部リンク。リンク元は表示1回・クリック1回・7位(表示が少なく効果は断定しない)",
+    "applied_at": "2026-10-24",
+    "before": {
+      "position": 7,
+      "impressions": 1,
+      "clicks": 1,
+      "period_end": "2026-10-21"
+    },
+    "changes": [
+      {
+        "file": "src/posts/senior-pet-nedoko-bed-erabikata.md",
+        "old": "床ずれ防止クッションはあくまで負担を軽減するための補助であり、すでに皮膚に異常が見られる場合は、クッションの導入だけで様子を見ず動物病院に相談することが推奨されています。",
+        "new": "床ずれ防止クッションはあくまで負担を軽減するための補助であり、すでに皮膚に異常が見られる場合は、クッションの導入だけで様子を見ず動物病院に相談することが推奨されています。\n\n{% whenPublished \"rougan-netakiri-tokozure-taisaku\" %}\n自分で寝返りが打てなくなってきた段階の体位変換や体圧分散マットについては、[老犬が寝たきりに近くなってきたら]({{ '/posts/rougan-netakiri-tokozure-taisaku/' | url }})で紹介しています。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-24-4",
+    "slug": "rougan-rouneko-sosou-taisaku",
+    "query": "犬 おむつかぶれ",
+    "reason": "10/17 承認の新記事(おむつかぶれ、11/12 公開予定)への内部リンク。リンク元は表示2回・11.5位(表示が少なく効果は断定しない)",
+    "applied_at": "2026-10-24",
+    "before": {
+      "position": 11.5,
+      "impressions": 2,
+      "clicks": 0,
+      "period_end": "2026-10-21"
+    },
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-sosou-taisaku.md",
+        "old": "おむつは移動範囲を制限されないメリットがある一方、サイズが合わないと漏れやすくなります。特にしっぽの形状や体型に合わせたフィット感を確認することが大切です。",
+        "new": "おむつは移動範囲を制限されないメリットがある一方、サイズが合わないと漏れやすくなります。特にしっぽの形状や体型に合わせたフィット感を確認することが大切です。\n\n{% whenPublished \"rougan-omutsu-kabure-care\" %}\nおむつを使い始めてお尻まわりが赤くなってきたら、[老犬・老猫のおむつかぶれが気になったら]({{ '/posts/rougan-omutsu-kabure-care/' | url }})もご覧ください。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-24-5",
+    "slug": "rougan-rouneko-kaigofuku-erabikata",
+    "query": "犬 おむつかぶれ",
+    "reason": "10/17 承認の新記事(おむつかぶれ、11/12 公開予定)への内部リンク。リンク元は検索結果に未掲載(10/17 公開)",
+    "applied_at": "2026-10-24",
+    "before": {
+      "position": null,
+      "impressions": 0,
+      "clicks": 0,
+      "period_end": null
+    },
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-kaigofuku-erabikata.md",
+        "old": "粗相対策の基本を見直したい方は、[老犬・老猫の粗相対策|防水シーツとおむつ、うちの子に合うのはどっち]({{ '/posts/rougan-rouneko-sosou-taisaku/' | url }})もあわせてご覧ください。",
+        "new": "粗相対策の基本を見直したい方は、[老犬・老猫の粗相対策|防水シーツとおむつ、うちの子に合うのはどっち]({{ '/posts/rougan-rouneko-sosou-taisaku/' | url }})もあわせてご覧ください。\n\n{% whenPublished \"rougan-omutsu-kabure-care\" %}\nおむつの中の皮膚ケアは、[老犬・老猫のおむつかぶれが気になったら]({{ '/posts/rougan-omutsu-kabure-care/' | url }})で紹介しています。\n{% endwhenPublished %}"
+      }
+    ]
   }
 ]
