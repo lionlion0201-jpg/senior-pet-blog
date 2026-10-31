@@ -1,11 +1,11 @@
 {
-  "decided_at": "2026-10-24T04:02:03.347Z",
-  "file": "レビュー決定/JP/decisions_JP_261024.json",
+  "decided_at": "2026-10-31T23:51:44.277Z",
+  "file": "レビュー決定/JP/decisions_JP_261101.json",
   "approved": [
-    "rougan-chuuya-gyakuten-taisaku",
-    "rougan-kaigo-koshi-futan-keigen",
-    "rougan-rouneko-danbou-yakedo-taisaku",
-    "rouneko-kezukuroi-care",
-    "senior-pet-oyatsu-minaoshi"
+    "rougan-kinryoku-iji-undou",
+    "rougan-rouneko-kisei-azukeru-junbi",
+    "rougan-rouneko-kusuri-kanri-guzzu",
+    "rougan-rouneko-yuka-hie-taisaku",
+    "rouneko-madobe-hinatabokko-basho"
   ]
 }

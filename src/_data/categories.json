@@ -120,6 +120,11 @@
     "rougan-chuuya-gyakuten-taisaku": "mind-behavior",
     "rouneko-kezukuroi-care": "body-care",
     "senior-pet-oyatsu-minaoshi": "food-water",
-    "rougan-kaigo-koshi-futan-keigen": "mobility"
+    "rougan-kaigo-koshi-futan-keigen": "mobility",
+    "rougan-kinryoku-iji-undou": "mobility",
+    "rougan-rouneko-kusuri-kanri-guzzu": "body-care",
+    "rougan-rouneko-yuka-hie-taisaku": "home-environment",
+    "rougan-rouneko-kisei-azukeru-junbi": "outing-safety",
+    "rouneko-madobe-hinatabokko-basho": "home-environment"
   }
 }

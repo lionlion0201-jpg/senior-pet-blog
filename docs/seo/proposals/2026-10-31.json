@@ -1,0 +1,67 @@
+[
+  {
+    "id": "2026-10-31-1",
+    "slug": "fuyujitaku-boukan-taisaku",
+    "query": "犬 低温やけど",
+    "reason": "表示1回・11位(表示が少なく順位の根拠ではない)。10/24 承認の新記事(暖房まわりの低温やけど、11/17 公開予定)を内部リンクで支える。前回サイクルのプロモーター案",
+    "changes": [
+      {
+        "file": "src/posts/fuyujitaku-boukan-taisaku.md",
+        "old": "ヒーターは長時間同じ姿勢で密着したままになりやすいため、体の一部だけが熱くなりすぎていないか、様子を時々確認することが推奨されています。",
+        "new": "ヒーターは長時間同じ姿勢で密着したままになりやすいため、体の一部だけが熱くなりすぎていないか、様子を時々確認することが推奨されています。\n\n{% whenPublished \"rougan-rouneko-danbou-yakedo-taisaku\" %}\nこたつやストーブなど、人が使う暖房器具まわりの注意点は、[老犬・老猫のこたつ・ホットカーペット・ストーブまわりが心配になったら]({{ '/posts/rougan-rouneko-danbou-yakedo-taisaku/' | url }})で紹介しています。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-31-2",
+    "slug": "rougan-rouneko-undoubusoku-shitsunai-asobi",
+    "query": "老犬 昼夜逆転",
+    "reason": "表示0回(根拠となる検索語なし)。10/24 承認の新記事(昼夜逆転、11/15 公開予定)を内部リンクで支える。前回サイクルのプロモーター案",
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-undoubusoku-shitsunai-asobi.md",
+        "old": "激しく動き回らなくても、鼻や頭を使うことで気分転換や適度な刺激になると言われています。おやつを使う場合は、フードの量から差し引くなど食事全体のバランスにも配慮しましょう。",
+        "new": "激しく動き回らなくても、鼻や頭を使うことで気分転換や適度な刺激になると言われています。おやつを使う場合は、フードの量から差し引くなど食事全体のバランスにも配慮しましょう。\n\n{% whenPublished \"rougan-chuuya-gyakuten-taisaku\" %}\n日中の過ごし方で昼夜逆転を和らげたい場合は、[老犬の昼夜逆転が気になったら]({{ '/posts/rougan-chuuya-gyakuten-taisaku/' | url }})も参考にしてください。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-31-3",
+    "slug": "rougan-rouneko-nukege-hifu-care",
+    "query": "老猫 毛づくろい しない",
+    "reason": "表示0回(根拠となる検索語なし)。10/24 承認の新記事(老猫の毛づくろい、11/18 公開予定)を内部リンクで支える。前回サイクルのプロモーター案",
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-nukege-hifu-care.md",
+        "old": "- 抜け毛が本体にたまりやすく、お手入れしやすい構造か",
+        "new": "- 抜け毛が本体にたまりやすく、お手入れしやすい構造か\n\n{% whenPublished \"rouneko-kezukuroi-care\" %}\n猫が自分で毛づくろいをしなくなってきた場合は、[老猫が毛づくろいをしなくなったら]({{ '/posts/rouneko-kezukuroi-care/' | url }})もご覧ください。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-31-4",
+    "slug": "senior-pet-taijuu-kanri-himan-taisaku",
+    "query": "シニア犬 おやつ",
+    "reason": "表示0回(根拠となる検索語なし)。10/24 承認の新記事(おやつの見直し、11/19 公開予定)を内部リンクで支える。前回サイクルのプロモーター案",
+    "changes": [
+      {
+        "file": "src/posts/senior-pet-taijuu-kanri-himan-taisaku.md",
+        "old": "フードの切り替えは急に行うと消化器に負担がかかる場合があるため、1〜2週間ほどかけて徐々に比率を変えていくことが一般的に推奨されています。",
+        "new": "フードの切り替えは急に行うと消化器に負担がかかる場合があるため、1〜2週間ほどかけて徐々に比率を変えていくことが一般的に推奨されています。\n\n{% whenPublished \"senior-pet-oyatsu-minaoshi\" %}\nおやつの量や選び方は、[シニア犬・シニア猫のおやつを見直したいとき]({{ '/posts/senior-pet-oyatsu-minaoshi/' | url }})で紹介しています。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-10-31-5",
+    "slug": "rougan-rouneko-hokou-hojo-harness",
+    "query": "老犬 介護 腰痛",
+    "reason": "表示2回・3位(表示が少なく順位の根拠ではない)。10/24 承認の新記事(介護する飼い主の腰、11/16 公開予定)を内部リンクで支える。前回サイクルのプロモーター案",
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-hokou-hojo-harness.md",
+        "old": "歩行の変化に気づいたら、まずは今の状態に合わせて「立ち上がりを支えるハーネス」「関節をサポートするレッグサポーター」「足裏の滑りを防ぐソックス」のどれが必要かを整理してみましょう。",
+        "new": "歩行の変化に気づいたら、まずは今の状態に合わせて「立ち上がりを支えるハーネス」「関節をサポートするレッグサポーター」「足裏の滑りを防ぐソックス」のどれが必要かを整理してみましょう。{% whenPublished \"rougan-kaigo-koshi-futan-keigen\" %}介護をする飼い主さんの腰の負担を減らす工夫は、[老犬の介護で腰がつらくなってきたら]({{ '/posts/rougan-kaigo-koshi-futan-keigen/' | url }})で紹介しています。{% endwhenPublished %}"
+      }
+    ]
+  }
+]
