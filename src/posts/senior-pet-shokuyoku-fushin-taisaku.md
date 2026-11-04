@@ -5,6 +5,7 @@ description: "シニア期の犬猫に増えてくる食欲不振・偏食の悩
 date: 2026-10-01
 tags: post
 publishAt: "2026-10-01T09:00:00+09:00"
+updated: 2026-11-04
 ---
 
 いつものフードを残すようになった、食べムラが出てきた、匂いを嗅ぐだけで離れていってしまう——シニア期の犬猫と暮らしていると、こうした食欲の変化に悩む場面が増えてきます。
@@ -55,6 +56,17 @@ publishAt: "2026-10-01T09:00:00+09:00"
 <strong>選び方の目安:</strong> まずは少量パッケージで反応を確認してから継続を検討する。
 <br><a class="button" href="https://www.amazon.co.jp/s?k=犬猫+ふりかけ+トッピング+嗜好性&tag=seniorpet-22" rel="nofollow sponsored">トッピング・ふりかけを見る →</a>
 </div>
+
+愛犬の場合は、香りの強いおやつが食べるきっかけになることもあります。たとえば犬用の「OIDE」は、鶏肉をベースにした小粒のセミモイスト(半生)タイプのおやつとして販売されています(私たち編集部は試していません)。主食の代わりにはならないため、少量にとどめ、持病がある子や療法食を食べている子は先に獣医師に確認してください。定期コースは解約するまで自動で届き、初回と2回目以降で価格が変わるため、申し込む前に公式サイトで条件を確認しましょう。
+
+<div class="cta-box">
+<strong>確認の目安:</strong> 犬用のおやつです。原材料と定期コースの解約条件を確かめてから検討する。
+<br><a class="button" href="https://af.moshimo.com/af/c/click?a_id=5881009&p_id=7855&pc_id=22778&pl_id=97827" rel="nofollow sponsored" referrerpolicy="no-referrer-when-downgrade" attributionsrc>OIDEの公式ページを見る →</a><img src="https://i.moshimo.com/af/i/impression?a_id=5881009&p_id=7855&pc_id=22778&pl_id=97827" width="1" height="1" style="border:none;" loading="lazy" alt="">
+</div>
+
+{% whenPublished "senior-pet-oyatsu-minaoshi" %}
+おやつの量や選び方は、[シニア犬・シニア猫のおやつを見直したいとき]({{ '/posts/senior-pet-oyatsu-minaoshi/' | url }})で整理しています。
+{% endwhenPublished %}
 
 ## 比較表:何から試すか
 
