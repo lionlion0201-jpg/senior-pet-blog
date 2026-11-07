@@ -1,0 +1,64 @@
+[
+  {
+    "id": "2026-11-07-1",
+    "slug": "senior-pet-tsuuin-carry-erabikata",
+    "query": "老犬 通院 キャリー(検索語は非表示のため推定)",
+    "reason": "ページ全体で平均14位・表示6回(10/07〜11/04)。今週の選定条件を満たす唯一の記事。検索語は件数が少なく非表示のため、タイトルの主要語から推定。読者の呼び方に合わせて「老犬・老猫」をタイトルに入れ、嫌がる子への対応と大型犬の通院の疑問に答えるFAQを追加。表示100回未満のため効果は断定しない",
+    "changes": [
+      {
+        "file": "src/posts/senior-pet-tsuuin-carry-erabikata.md",
+        "old": "title: \"シニア犬猫の通院・お出かけ｜キャリーバッグ・ペットカートの選び方\"",
+        "new": "title: \"老犬・老猫の通院キャリーの選び方｜キャリーバッグ・ペットカート・リュック型を比較\""
+      },
+      {
+        "file": "src/posts/senior-pet-tsuuin-carry-erabikata.md",
+        "old": "description: \"通院の回数が増えてくるシニア期の犬猫に向けて、体への負担が少ないキャリーバッグ・ペットカートの選び方を比較します。導入前に確認したい注意点も解説。\"",
+        "new": "description: \"通院の回数が増えてくる老犬・老猫に向けて、体への負担が少ないキャリーバッグ・ペットカート・リュック型キャリーの選び方を比較します。キャリーを嫌がる子への慣らし方や、体の大きな老犬の通院についても整理しました。\""
+      },
+      {
+        "file": "src/posts/senior-pet-tsuuin-carry-erabikata.md",
+        "old": "通院や体調管理と合わせて、[シニア期からのペット保険の選び方|加入前に確認したい5つのポイント]({{ '/posts/senior-pet-hoken-erabikata/' | url }})も参考になります。",
+        "new": "通院や体調管理と合わせて、[シニア期からのペット保険の選び方|加入前に確認したい5つのポイント]({{ '/posts/senior-pet-hoken-erabikata/' | url }})も参考になります。\n\n{% whenPublished \"rougan-rouneko-kisei-azukeru-junbi\" %}\n帰省や旅行で連れて行くか預けるか迷ったときは、[年末年始の帰省、老犬・老猫を連れて行く?預ける?]({{ '/posts/rougan-rouneko-kisei-azukeru-junbi/' | url }})をご覧ください。\n{% endwhenPublished %}\n\n## よくある質問(FAQ)\n\n**Q. 老犬・老猫がキャリーを嫌がるときは、どうすればよいですか?**\nA. 通院のときだけキャリーを出すと、キャリーと通院が結びつきやすいと言われています。普段から部屋に置いて扉を開けておき、中に使い慣れた布を入れて、自分から入れる場所にしておく方法がよく紹介されています。嫌がり方が強いときや、乗せ降ろしで痛がるときは、動物病院に相談してください。\n\n**Q. 通院にはキャリーバッグとペットカートのどちらがよいですか?**\nA. 移動の距離と、飼い主さんが持ち運べる重さで考えるとよいでしょう。短い距離の通院が中心ならキャリーバッグ、歩く距離が長い場合や持ち上げるのが負担な場合はペットカートが候補になります。\n\n**Q. 体の大きな老犬の通院はどうすればよいですか?**\nA. キャリーに入らない体格の場合は、対応体重に余裕のあるペットカートが候補になります。乗せ降ろしが難しいときは、家族で手分けする、通院の方法をかかりつけの動物病院に相談するなど、無理に抱え上げない方法を考えましょう。"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-07-2",
+    "slug": "rougan-rouneko-touyaku-hojo-guzzu",
+    "query": "犬 薬 管理",
+    "reason": "内部リンクのみ。前回プロモーター案。リンク先(お薬の管理、11/22公開)を支える目的。リンク元は表示2回・5.5位・検索クリック1回で、今週の選定条件(ページ表示5回以上)は満たさない。順位改善の根拠ではない",
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-touyaku-hojo-guzzu.md",
+        "old": "シニア期のサプリメント・療法食の選び方については、[シニア犬猫の関節ケア｜サプリメントと療法食、どちらから始めるべきか]({{ '/posts/senior-pet-kansetsu-care/' | url }})もあわせてご覧ください。",
+        "new": "シニア期のサプリメント・療法食の選び方については、[シニア犬猫の関節ケア｜サプリメントと療法食、どちらから始めるべきか]({{ '/posts/senior-pet-kansetsu-care/' | url }})もあわせてご覧ください。\n\n{% whenPublished \"rougan-rouneko-kusuri-kanri-guzzu\" %}\nお薬の種類が増えてきたときの保管や記録の工夫は、[老犬・老猫のお薬が増えてきたら]({{ '/posts/rougan-rouneko-kusuri-kanri-guzzu/' | url }})で紹介しています。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-07-3",
+    "slug": "rouneko-jampuryoku-teika-cat-tower",
+    "query": "老猫 日向ぼっこ",
+    "reason": "内部リンクのみ。前回プロモーター案。リンク先(窓辺、11/24公開)を支える目的。リンク元は表示3回・5.7位で、今週の選定条件は満たさない。順位改善の根拠ではない",
+    "changes": [
+      {
+        "file": "src/posts/rouneko-jampuryoku-teika-cat-tower.md",
+        "old": "段差の負担が気になる方は、[老犬の段差・階段対策|すべらないスロープ・マットの選び方と比較]({{ '/posts/rougan-dansa-taisaku/' | url }})もあわせてご覧ください。",
+        "new": "段差の負担が気になる方は、[老犬の段差・階段対策|すべらないスロープ・マットの選び方と比較]({{ '/posts/rougan-dansa-taisaku/' | url }})もあわせてご覧ください。\n\n{% whenPublished \"rouneko-madobe-hinatabokko-basho\" %}\nお気に入りの窓辺に上がれなくなった場合は、[老猫が日向ぼっこの場所に上がれなくなったら]({{ '/posts/rouneko-madobe-hinatabokko-basho/' | url }})もご覧ください。\n{% endwhenPublished %}"
+      }
+    ]
+  },
+  {
+    "id": "2026-11-07-4",
+    "slug": "rougan-rouneko-ochitsukanai-anshin-care",
+    "query": "老犬 夜泣き",
+    "reason": "内部リンクのみ。戦略の「不安・夜泣き」補強。検索からアフィリエイトクリックが出た唯一の記事(表示3回・7位・検索クリック1回)から、夜泣きのまとまりへつなぐ。認知症記事は公開済み、老猫の夜鳴きは11/14公開のため whenPublished で包む。表示100回未満で順位改善の根拠ではない",
+    "changes": [
+      {
+        "file": "src/posts/rougan-rouneko-ochitsukanai-anshin-care.md",
+        "old": "一時的な刺激へのそわそわとは異なり、変化が続く場合や他の症状を伴う場合は、加齢に伴う脳機能の変化など別の要因が関係していることもあると言われています。気になる様子が続く場合は、グッズだけに頼らず動物病院に相談することをおすすめします。",
+        "new": "一時的な刺激へのそわそわとは異なり、変化が続く場合や他の症状を伴う場合は、加齢に伴う脳機能の変化など別の要因が関係していることもあると言われています。気になる様子が続く場合は、グッズだけに頼らず動物病院に相談することをおすすめします。\n\n夜に鳴き続ける、歩き回るといった様子が気になる場合は、[老犬・老猫の夜泣き・徘徊を和らげる対策]({{ '/posts/rougan-rouneko-ninchisho-taisaku/' | url }})もあわせてご覧ください。\n\n{% whenPublished \"shinia-neko-yonaki-taisaku\" %}\n猫の場合は、[老猫の夜鳴きが増えてきたら]({{ '/posts/shinia-neko-yonaki-taisaku/' | url }})も参考にしてください。\n{% endwhenPublished %}"
+      }
+    ]
+  }
+]

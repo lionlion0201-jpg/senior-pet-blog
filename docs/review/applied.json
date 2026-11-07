@@ -1,11 +1,9 @@
 {
-  "decided_at": "2026-10-31T23:51:44.277Z",
-  "file": "レビュー決定/JP/decisions_JP_261101.json",
+  "decided_at": "2026-11-07T00:05:00.051Z",
+  "file": "レビュー決定/JP/decisions_JP_261107.json",
   "approved": [
-    "rougan-kinryoku-iji-undou",
-    "rougan-rouneko-kisei-azukeru-junbi",
-    "rougan-rouneko-kusuri-kanri-guzzu",
-    "rougan-rouneko-yuka-hie-taisaku",
-    "rouneko-madobe-hinatabokko-basho"
+    "rougan-rusuban-naku-fuan",
+    "rougan-yonaki-kainushi-suimin",
+    "rouneko-kakureru-detekonai"
   ]
 }
