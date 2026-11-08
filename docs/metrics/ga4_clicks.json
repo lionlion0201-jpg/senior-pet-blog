@@ -3,88 +3,112 @@
     "article": "/",
     "source": "(direct)",
     "affiliate_clicks": 0,
-    "sessions": 45,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "sessions": 44,
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/",
     "source": "scriblihelp.com",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/",
     "source": "secure.moshimo.com",
     "affiliate_clicks": 0,
     "sessions": 2,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
+  },
+  {
+    "article": "/category/body-care/",
+    "source": "(direct)",
+    "affiliate_clicks": 0,
+    "sessions": 1,
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
+  },
+  {
+    "article": "/category/home-environment/",
+    "source": "(direct)",
+    "affiliate_clicks": 0,
+    "sessions": 1,
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
+  },
+  {
+    "article": "/category/mobility/",
+    "source": "(direct)",
+    "affiliate_clicks": 0,
+    "sessions": 1,
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/posts/rougan-dansa-taisaku/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/posts/rougan-rouneko-ninchisho-taisaku/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 2,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/posts/rougan-rouneko-nomi-dani-taisaku/",
     "source": "t.co",
     "affiliate_clicks": 1,
     "sessions": 2,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/posts/rougan-rouneko-ochitsukanai-anshin-care/",
     "source": "google",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/posts/senior-pet-dental-care/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/posts/senior-pet-tsuuin-carry-erabikata/",
     "source": "google",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/posts/senior-pet-tsuuin-carry-erabikata/",
     "source": "yahoo",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   },
   {
     "article": "/privacy-policy/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-09",
-    "period_end": "2026-11-08"
+    "period_start": "2026-10-10",
+    "period_end": "2026-11-09"
   }
 ]
