@@ -5,7 +5,7 @@ description: "シニア期の犬猫に増えてくる食欲不振・偏食の悩
 date: 2026-10-01
 tags: post
 publishAt: "2026-10-01T09:00:00+09:00"
-updated: 2026-11-04
+updated: 2026-11-10
 ---
 
 いつものフードを残すようになった、食べムラが出てきた、匂いを嗅ぐだけで離れていってしまう——シニア期の犬猫と暮らしていると、こうした食欲の変化に悩む場面が増えてきます。
@@ -29,6 +29,13 @@ updated: 2026-11-04
 <div class="cta-box">
 <strong>選び方の目安:</strong> シニア用・小分けパウチタイプから試すと、食べ残しの無駄が出にくい。
 <br><a class="button" href="https://www.amazon.co.jp/s?k=犬猫+シニア用+ウェットフード+パウチ&tag=seniorpet-22" rel="nofollow sponsored">シニア用ウェットフードを見る →</a>
+</div>
+
+香りの立つ冷凍のトッピングを試す方法もあります。たとえば犬用の「Deli One(デリワン)」は、国産の肉や魚と野菜を調理して冷凍した一般食で、温めてドライフードに添えて使うものとして販売されています(私たち編集部は試していません)。一般食は、それだけで必要な栄養がそろうように作られた総合栄養食ではないため、主食のドライフードに添えて使い、添えた分だけドライフードを減らします。鶏肉・鹿肉・魚の3種類で原材料が異なるので、食物アレルギーがある子は原材料を確認し、持病がある子や療法食を食べている子は先に獣医師に相談してください。お試しのセットは定期コースの初回にあたり、解約しない限り2回目から量の多いセットが届くため、申し込む前に公式サイトで解約の条件を確認しましょう。
+
+<div class="cta-box">
+<strong>確認の目安:</strong> 犬用の冷凍トッピング(一般食)。原材料と、定期コースの2回目以降の内容・解約条件を確かめてから検討する。
+<br><a class="button" href="https://af.moshimo.com/af/c/click?a_id=5891546&p_id=7858&pc_id=22786&pl_id=97864&url=https%3A%2F%2Fdeli-one.com%2F" rel="nofollow sponsored" referrerpolicy="no-referrer-when-downgrade" attributionsrc>Deli Oneの公式ページを見る →</a><img src="https://i.moshimo.com/af/i/impression?a_id=5891546&p_id=7858&pc_id=22786&pl_id=97864" width="1" height="1" style="border:none;" loading="lazy" alt="">
 </div>
 
 ## フードウォーマー・食器台の選び方

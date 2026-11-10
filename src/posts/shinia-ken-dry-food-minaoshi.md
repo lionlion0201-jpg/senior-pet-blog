@@ -5,6 +5,7 @@ description: "食べるペースが落ちた、粒を残すようになったな
 date: 2026-11-09
 tags: post
 publishAt: "2026-11-09T09:00:00+09:00"
+updated: 2026-11-10
 ---
 
 若い頃と同じフードを食べているのに、食べ終わるまでに時間がかかるようになった。お皿に粒が残る日が増えた——シニア期に入ると、毎日の主食であるドライフードが、今の体に合っているかが気になってくることがあります。
@@ -47,6 +48,13 @@ publishAt: "2026-11-09T09:00:00+09:00"
 <div class="cta-box">
 <strong>選び方の目安:</strong> 口の大きさと噛む力に合った、小さめで噛み砕きやすい粒のものを選ぶ。
 <br><a class="button" href="https://www.amazon.co.jp/s?k=ドッグフード+シニア+小粒&tag=seniorpet-22" rel="nofollow sponsored">小粒のドライフードを見る →</a>
+</div>
+
+粒を残すようになった子には、主食を替える前に、香りのあるトッピングを少し添えて様子を見る方法もあります。たとえば犬用の「Deli One(デリワン)」は、ドライフードに添えて使う国産の冷凍ごはん(一般食)として販売されています(私たち編集部は試していません)。一般食だけでは必要な栄養がそろわないため、主食は総合栄養食のドライフードのまま、添えた分だけドライフードを減らすのが前提です。持病がある子や療法食を食べている子は、先に獣医師に相談してください。定期コースは、お試しの後も解約しない限り自動で届くので、申し込む前に公式サイトで解約の条件を確認しましょう。
+
+<div class="cta-box">
+<strong>確認の目安:</strong> ドライフードに添えて使う冷凍ごはん(一般食)。原材料と定期コースの解約条件を確かめてから検討する。
+<br><a class="button" href="https://af.moshimo.com/af/c/click?a_id=5891546&p_id=7858&pc_id=22786&pl_id=97864&url=https%3A%2F%2Fdeli-one.com%2F" rel="nofollow sponsored" referrerpolicy="no-referrer-when-downgrade" attributionsrc>Deli Oneの公式ページを見る →</a><img src="https://i.moshimo.com/af/i/impression?a_id=5891546&p_id=7858&pc_id=22786&pl_id=97864" width="1" height="1" style="border:none;" loading="lazy" alt="">
 </div>
 
 ## 原材料と製法で選ぶ
