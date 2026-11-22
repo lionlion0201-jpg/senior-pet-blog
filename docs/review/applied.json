@@ -1,9 +1,12 @@
 {
-  "decided_at": "2026-11-07T00:05:00.051Z",
-  "file": "レビュー決定/JP/decisions_JP_261107.json",
+  "decided_at": "2026-11-22T23:03:19.957Z",
+  "file": "レビュー決定/JP/decisions_JP_261123.json",
   "approved": [
-    "rougan-rusuban-naku-fuan",
-    "rougan-yonaki-kainushi-suimin",
-    "rouneko-kakureru-detekonai"
+    "rougan-kaigo-junbi-checklist",
+    "rougan-rouneko-fuyu-tsuuin-samusa",
+    "rougan-rouneko-megusuri-sashikata",
+    "rougan-rouneko-mizu-nomanai",
+    "rougan-rouneko-oshikko-yuka-souji",
+    "rougan-taishuu-care"
   ]
 }
