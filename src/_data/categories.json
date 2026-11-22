@@ -128,6 +128,12 @@
     "rouneko-madobe-hinatabokko-basho": "home-environment",
     "rougan-rusuban-naku-fuan": "mind-behavior",
     "rougan-yonaki-kainushi-suimin": "mind-behavior",
-    "rouneko-kakureru-detekonai": "mind-behavior"
+    "rouneko-kakureru-detekonai": "mind-behavior",
+    "rougan-taishuu-care": "body-care",
+    "rougan-rouneko-megusuri-sashikata": "body-care",
+    "rougan-kaigo-junbi-checklist": "mobility",
+    "rougan-rouneko-oshikko-yuka-souji": "toilet-hygiene",
+    "rougan-rouneko-mizu-nomanai": "food-water",
+    "rougan-rouneko-fuyu-tsuuin-samusa": "outing-safety"
   }
 }
