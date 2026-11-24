@@ -3,104 +3,112 @@
     "article": "/",
     "source": "(direct)",
     "affiliate_clicks": 0,
-    "sessions": 13,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "sessions": 11,
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/",
     "source": "secure.moshimo.com",
     "affiliate_clicks": 0,
     "sessions": 2,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/category/body-care/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/category/home-environment/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/category/mobility/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/posts/rougan-haikai-enkei-circle/",
     "source": "google",
-    "affiliate_clicks": 1,
-    "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "affiliate_clicks": 3,
+    "sessions": 2,
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
-    "article": "/posts/rougan-rouneko-massage-kekkou-care/",
-    "source": "(not set)",
-    "affiliate_clicks": 0,
+    "article": "/posts/rougan-kaigo-koshi-futan-keigen/",
+    "source": "google",
+    "affiliate_clicks": 2,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/posts/rougan-rouneko-massage-kekkou-care/",
     "source": "service.smt.docomo.ne.jp",
     "affiliate_clicks": 1,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/posts/rougan-rouneko-undoubusoku-shitsunai-asobi/",
     "source": "google",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
+  },
+  {
+    "article": "/posts/rouneko-kezukuroi-care/",
+    "source": "google",
+    "affiliate_clicks": 1,
+    "sessions": 1,
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/posts/senior-pet-dental-care/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/posts/senior-pet-nedoko-bed-erabikata/",
     "source": "yahoo",
     "affiliate_clicks": 1,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/posts/senior-pet-tsuuin-carry-erabikata/",
     "source": "google",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   },
   {
     "article": "/privacy-policy/",
     "source": "(direct)",
     "affiliate_clicks": 0,
     "sessions": 1,
-    "period_start": "2026-10-24",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-25",
+    "period_end": "2026-11-24"
   }
 ]
