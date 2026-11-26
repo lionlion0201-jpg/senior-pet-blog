@@ -5,8 +5,8 @@
     "clicks": 0,
     "impressions": 1,
     "position": 6,
-    "period_start": "2026-10-26",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-27",
+    "period_end": "2026-11-24"
   },
   {
     "query": "シニア犬 目元ケア 拭き取り用品",
@@ -14,8 +14,8 @@
     "clicks": 0,
     "impressions": 4,
     "position": 5,
-    "period_start": "2026-10-26",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-27",
+    "period_end": "2026-11-24"
   },
   {
     "query": "円形サークル 老犬",
@@ -23,8 +23,17 @@
     "clicks": 0,
     "impressions": 8,
     "position": 9.1,
-    "period_start": "2026-10-26",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-27",
+    "period_end": "2026-11-24"
+  },
+  {
+    "query": "犬 バランスボール 代用",
+    "page": "https://seniorpet-life.com/posts/rougan-kinryoku-iji-undou/",
+    "clicks": 0,
+    "impressions": 1,
+    "position": 9,
+    "period_start": "2026-10-27",
+    "period_end": "2026-11-24"
   },
   {
     "query": "盲目",
@@ -32,8 +41,8 @@
     "clicks": 0,
     "impressions": 1,
     "position": 1,
-    "period_start": "2026-10-26",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-27",
+    "period_end": "2026-11-24"
   },
   {
     "query": "老犬 円形サークル",
@@ -41,7 +50,7 @@
     "clicks": 0,
     "impressions": 3,
     "position": 9.7,
-    "period_start": "2026-10-26",
-    "period_end": "2026-11-23"
+    "period_start": "2026-10-27",
+    "period_end": "2026-11-24"
   }
 ]
