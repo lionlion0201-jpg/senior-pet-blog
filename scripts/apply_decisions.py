@@ -140,7 +140,7 @@ def main():
         json.dump({"decided_at": decided_at, "file": f"レビュー決定/JP/{archive_name(decided_at)}",
                    "approved": [d["slug"] for d in approved]}, f, ensure_ascii=False, indent=2)
         f.write("\n")
-    run("git", "add", "-A", "src/posts", "docs")
+    run("git", "add", "-A", "src/posts", "src/_data/categories.json", "docs")
     if subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT).returncode == 0:
         sys.exit("反映による変更がありません(すでに反映済みの可能性)。commit・push はしません。")
     lines = [f"- {d['publish_date']} {d['slug']}" for d in sorted(approved, key=lambda d: d["publish_date"])]
