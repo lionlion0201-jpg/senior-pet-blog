@@ -134,6 +134,9 @@
     "rougan-kaigo-junbi-checklist": "mobility",
     "rougan-rouneko-oshikko-yuka-souji": "toilet-hygiene",
     "rougan-rouneko-mizu-nomanai": "food-water",
-    "rougan-rouneko-fuyu-tsuuin-samusa": "outing-safety"
+    "rougan-rouneko-fuyu-tsuuin-samusa": "outing-safety",
+    "rougan-kaidan-kitchen-gate": "home-environment",
+    "rougan-rouneko-kuchimawari-yodare-care": "body-care",
+    "rougan-kaigo-youhin-shuunou": "mobility"
   }
 }
