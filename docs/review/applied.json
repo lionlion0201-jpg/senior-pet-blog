@@ -1,12 +1,9 @@
 {
-  "decided_at": "2026-11-22T23:03:19.957Z",
-  "file": "レビュー決定/JP/decisions_JP_261123.json",
+  "decided_at": "2026-11-28T00:31:52.183Z",
+  "file": "レビュー決定/JP/decisions_JP_261128.json",
   "approved": [
-    "rougan-kaigo-junbi-checklist",
-    "rougan-rouneko-fuyu-tsuuin-samusa",
-    "rougan-rouneko-megusuri-sashikata",
-    "rougan-rouneko-mizu-nomanai",
-    "rougan-rouneko-oshikko-yuka-souji",
-    "rougan-taishuu-care"
+    "rougan-kaidan-kitchen-gate",
+    "rougan-kaigo-youhin-shuunou",
+    "rougan-rouneko-kuchimawari-yodare-care"
   ]
 }
